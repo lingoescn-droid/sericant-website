@@ -1,35 +1,33 @@
-# Sericant — Vercel-ready website
+# Sericant Website v3 — Cyberport Review Edition
 
-A minimal Next.js website for Sericant Limited.
+This version is designed to align the public website with the FINAL OPC Hub @ Cyberport application materials.
 
-## Local development
+## Key changes from v2
+- Stronger "AI-native company intelligence" positioning
+- Interactive professional Company Research demo
+- Research pipeline: Interpret → Retrieve → Resolve → Verify → Synthesize → Provenance
+- Responsible AI & Data page
+- Founder story aligned with application materials
+- Explicit current-vs-roadmap language
+- Privacy and Terms pages
+- robots.txt and sitemap.xml through Next.js metadata routes
+- Responsive desktop / iPhone / Android layout
 
-```bash
-npm install
-npm run dev
-```
+## Important positioning
+- The public company research experience is an illustrative demo.
+- It is not a live third-party enterprise-data feed.
+- No specific company-data provider is named or represented as authorized.
+- Production integrations are described as future and conditional on licensing / authorization / compliance arrangements.
+- Agentic workflows are roadmap items unless actually deployed.
 
-Open http://localhost:3000
+## Deploy
+Replace the files in the existing GitHub repository connected to Vercel.
+Do NOT create a new Vercel project or change Alibaba Cloud DNS.
 
-## Deploy to Vercel
+Expected production domain:
+https://www.sericant.com
 
-1. Create a GitHub repository and upload this folder.
-2. Import the repository into Vercel.
-3. Deploy using the default Next.js settings.
-4. In Vercel, open Project → Settings → Domains and add `sericant.com`.
-5. Vercel will show the exact DNS records required.
-6. In Alibaba Cloud DNS, add those records to the `sericant.com` zone.
-7. Wait for DNS propagation and verify HTTPS.
-
-## Before launch
-
-- Replace the placeholder product demo with a real screenshot or live MVP.
-- Confirm the founder's preferred public biography.
-- Add a real business email if `hello@sericant.com` is not configured.
-- Add final Privacy Policy and Terms of Use pages before collecting user data.
-- Review all data/licensing/compliance claims before publishing them as factual statements.
-
-## Suggested future architecture
-
-- `sericant.com` — marketing/company site
-- `app.sericant.com` — product application
+## Before publishing
+- Confirm the public founder biography is acceptable.
+- Consider replacing the Gmail address with a Sericant domain email later.
+- Review Privacy and Terms before enabling accounts, payments, cookies/analytics or production data.
