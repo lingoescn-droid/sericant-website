@@ -1,18 +1,39 @@
-import type { Metadata } from "next";
 import "./globals.css";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sericant — AI-powered Enterprise Data Intelligence",
+  metadataBase: new URL("https://www.sericant.com"),
+  title: {
+    default: "Sericant — AI-native Company Intelligence",
+    template: "%s | Sericant"
+  },
   description:
-    "Sericant transforms enterprise information from Mainland China and Hong Kong into accessible, understandable and actionable intelligence.",
-  metadataBase: new URL("https://sericant.com"),
+    "Sericant is building an AI-native company intelligence platform for professional and cross-border research on Mainland Chinese and Hong Kong companies.",
+  keywords: [
+    "company intelligence",
+    "China company research",
+    "Hong Kong company research",
+    "AI research",
+    "cross-border due diligence",
+    "enterprise intelligence"
+  ],
   openGraph: {
-    title: "Sericant — Enterprise Data Intelligence",
+    title: "Sericant — AI-native Company Intelligence",
     description:
-      "Making Chinese Enterprise Data Accessible, Understandable and Actionable.",
-    url: "https://sericant.com",
+      "Structured, explainable company intelligence for professional and cross-border research.",
+    url: "https://www.sericant.com",
     siteName: "Sericant",
     type: "website"
+  },
+  twitter: {
+    card: "summary",
+    title: "Sericant — AI-native Company Intelligence",
+    description:
+      "Structured, explainable company intelligence for professional and cross-border research."
+  },
+  robots: {
+    index: true,
+    follow: true
   }
 };
 
