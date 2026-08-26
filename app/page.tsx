@@ -1,168 +1,804 @@
-import Link from "next/link";
+"use client";
 
-const nav = [
-  ["Product", "#product"],
-  ["Technology", "#technology"],
-  ["About", "#about"],
-  ["Roadmap", "#roadmap"]
+import Link from "next/link";
+import { useMemo, useState } from "react";
+
+type DemoReport = {
+  name: string;
+  market: string;
+  status: string;
+  overview: string;
+  facts: string[];
+  sources: string[];
+};
+
+const DEMOS: Record<string, DemoReport> = {
+  alibaba: {
+    name: "Alibaba Group",
+    market: "Mainland China",
+    status: "Illustrative demo",
+    overview:
+      "A technology and commerce group used here to demonstrate how Sericant can organise company information into a concise, structured research view.",
+    facts: [
+      "Sector: Technology & commerce",
+      "Research format: Structured company profile",
+      "Output type: AI-assisted summary"
+    ],
+    sources: [
+      "Illustrative source record A",
+      "Illustrative source record B"
+    ]
+  },
+  tencent: {
+    name: "Tencent",
+    market: "Mainland China",
+    status: "Illustrative demo",
+    overview:
+      "A technology group used here to demonstrate a professional company-research workflow with structured facts, AI-assisted synthesis and provenance presentation.",
+    facts: [
+      "Sector: Internet & technology",
+      "Research format: Company intelligence summary",
+      "Output type: AI-assisted synthesis"
+    ],
+    sources: [
+      "Illustrative source record A",
+      "Illustrative source record B"
+    ]
+  },
+  byd: {
+    name: "BYD",
+    market: "Mainland China",
+    status: "Illustrative demo",
+    overview:
+      "A manufacturing and technology company used here to demonstrate how Sericant can transform structured company information into a readable intelligence brief.",
+    facts: [
+      "Sector: New energy & manufacturing",
+      "Research format: Structured intelligence",
+      "Output type: AI-assisted summary"
+    ],
+    sources: [
+      "Illustrative source record A",
+      "Illustrative source record B"
+    ]
+  }
+};
+
+const stages = [
+  "Interpret research request",
+  "Identify target entity",
+  "Retrieve approved-source information",
+  "Extract structured facts",
+  "Verify consistency",
+  "Generate bounded synthesis",
+  "Present provenance"
 ];
 
 export default function Home() {
+  const [query, setQuery] = useState("");
+  const [loadingStep, setLoadingStep] = useState<number | null>(null);
+  const [report, setReport] = useState<DemoReport | null>(null);
+
+  const progress = useMemo(() => {
+    if (loadingStep === null) return 0;
+    return Math.round(((loadingStep + 1) / stages.length) * 100);
+  }, [loadingStep]);
+
+  async function runDemo() {
+    const q = query.trim();
+    if (!q) return;
+
+    setReport(null);
+
+    for (let i = 0; i < stages.length; i++) {
+      setLoadingStep(i);
+      await new Promise((resolve) => setTimeout(resolve, 320));
+    }
+
+    const key = Object.keys(DEMOS).find((k) =>
+      q.toLowerCase().includes(k)
+    );
+
+    setReport(
+      key
+        ? DEMOS[key]
+        : {
+            name: q,
+            market: "Illustrative demo",
+            status: "Illustrative demo",
+            overview:
+              "This interactive prototype demonstrates the intended Sericant research experience. It does not represent a live third-party enterprise-data search.",
+            facts: [
+              "Research mode: Illustrative",
+              "Data mode: Demo content only",
+              "Output type: AI-assisted research preview"
+            ],
+            sources: [
+              "Illustrative source record A",
+              "Illustrative source record B"
+            ]
+          }
+    );
+
+    setLoadingStep(null);
+  }
+
   return (
     <main>
-      <header className="nav">
-        <Link href="#" className="brand">SERICANT<span>.</span></Link>
-        <nav>
-          {nav.map(([label, href]) => <Link key={label} href={href}>{label}</Link>)}
+      <header className="topbar">
+        <Link href="/" className="logo">
+          SERICANT
+        </Link>
+
+        <nav className="desktopNav">
+          <a href="#product">Product</a>
+          <a href="#workflow">Technology</a>
+          <a href="#roadmap">Roadmap</a>
+          <a href="#about">About</a>
+          <Link href="/responsible-ai-data">
+            Responsible AI & Data
+          </Link>
         </nav>
-        <a className="navCta" href="mailto:hello@sericant.com">Contact</a>
+
+        <a href="#contact" className="topCta">
+          Contact
+        </a>
       </header>
 
       <section className="hero">
-        <div className="eyebrow">AI-POWERED ENTERPRISE DATA INTELLIGENCE</div>
-        <h1>Making Chinese Enterprise Data <em>understandable.</em></h1>
-        <p className="heroCopy">
-          Sericant is building an AI-powered platform that transforms enterprise
-          information from Mainland China and Hong Kong into accessible,
-          understandable and actionable intelligence.
+        <div className="eyebrow">
+          AI-NATIVE COMPANY INTELLIGENCE
+        </div>
+
+        <h1>
+          Making Chinese
+          <br />
+          Enterprise Data
+          <br />
+          <em>understandable.</em>
+        </h1>
+
+        <p className="heroText">
+          AI-native company intelligence for professionals researching
+          Mainland Chinese and Hong Kong companies.
         </p>
-        <div className="actions">
-          <a className="button primary" href="#product">Explore the product <span>↗</span></a>
-          <a className="button ghost" href="mailto:hello@sericant.com">Talk to us</a>
+
+        <p
+          style={{
+            maxWidth: "720px",
+            fontSize: "15px",
+            lineHeight: 1.7,
+            marginTop: "-8px",
+            marginBottom: "28px"
+          }}
+        >
+          Sericant is building a professional research platform that turns
+          complex company information into structured, readable and
+          decision-ready intelligence for cross-border research.
+        </p>
+
+        <div className="heroActions">
+          <a href="#demo" className="btn primary">
+            Explore the prototype
+          </a>
+
+          <a href="#about" className="btn secondary">
+            About Sericant
+          </a>
         </div>
+
         <div className="heroMeta">
-          <span>HONG KONG</span><i /> <span>MAINLAND CHINA</span><i /> <span>GLOBAL</span>
+          <span>HONG KONG COMPANY</span>
+          <i />
+          <span>CURRENT MVP</span>
+          <i />
+          <span>AGENTIC AI ROADMAP</span>
         </div>
       </section>
 
-      <section className="statement">
+      <section className="section">
         <div className="sectionLabel">01 / THE OPPORTUNITY</div>
-        <div>
-          <h2>Enterprise information is abundant.<br />Understanding it shouldn’t be difficult.</h2>
-          <p>
-            China has one of the world’s largest and most extensive corporate
-            ecosystems. Yet enterprise information can be fragmented, complex
-            and difficult to interpret — especially for users outside Mainland China.
-          </p>
-        </div>
-      </section>
 
-      <section id="product" className="productSection">
-        <div className="sectionLabel">02 / PRODUCT</div>
-        <div className="productGrid">
+        <div className="twoCol">
+          <div />
+
           <div>
-            <h2>From company data<br />to enterprise intelligence.</h2>
-            <p>
-              Our first capability is an AI Company Summary: enter a company name
-              and generate a concise, structured overview from relevant enterprise information.
-            </p>
-            <div className="status"><b /> MVP / EARLY STAGE</div>
-          </div>
-          <div className="demo">
-            <div className="demoTop"><span>AI COMPANY SUMMARY</span><span>01</span></div>
-            <div className="search">Tencent Technology (Shenzhen) Co., Ltd.<span>⌕</span></div>
-            <div className="result">
-              <div className="resultTag">AI-GENERATED SUMMARY</div>
-              <h3>Tencent Technology (Shenzhen) Co., Ltd.</h3>
+            <h2
+              style={{
+                fontSize: "clamp(42px, 5vw, 72px)"
+              }}
+            >
+              Enterprise information is abundant.
+              <br />
+              Understanding it shouldn&apos;t be difficult.
+            </h2>
+
+            <div className="bodyCopy" style={{ marginTop: "34px" }}>
               <p>
-                A technology company profile generated from enterprise information,
-                organised into a concise overview for faster research.
+                China has one of the world&apos;s largest and most active
+                corporate ecosystems. Yet enterprise information can be
+                fragmented, complex and difficult to interpret — especially
+                for users outside Mainland China.
               </p>
-              <div className="chips"><span>Corporate Profile</span><span>Business</span><span>AI Summary</span></div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="technology" className="techSection">
-        <div className="sectionLabel">03 / TECHNOLOGY</div>
-        <h2>Data → Structure → AI → Intelligence</h2>
-        <div className="steps">
+      <section className="demoSection" id="demo">
+        <div className="sectionLabel light">
+          02 / CURRENT MVP
+        </div>
+
+        <div className="demoIntro">
+          <div>
+            <div
+              className="miniLabel"
+              style={{ marginBottom: "18px" }}
+            >
+              CURRENT MVP · INTERACTIVE PROTOTYPE
+            </div>
+
+            <h2>
+              From company data
+              <br />
+              to enterprise intelligence.
+            </h2>
+
+            <p>
+              The current prototype demonstrates company-name input,
+              structured research output and AI-assisted company
+              summarisation.
+            </p>
+          </div>
+
+          <span className="demoBadge">
+            ILLUSTRATIVE PROTOTYPE
+          </span>
+        </div>
+
+        <div className="searchCard">
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && runDemo()}
+            placeholder="Enter a company name, e.g. Tencent"
+            aria-label="Company name"
+          />
+
+          <button onClick={runDemo}>
+            Generate research preview →
+          </button>
+        </div>
+
+        <div className="suggestions">
+          <span>Try:</span>
+
+          {["Alibaba Group", "Tencent", "BYD"].map((name) => (
+            <button
+              key={name}
+              onClick={() => setQuery(name)}
+            >
+              {name}
+            </button>
+          ))}
+        </div>
+
+        {loadingStep !== null && (
+          <div className="researchProgress">
+            <div className="progressHeader">
+              <span>Researching...</span>
+              <span>{progress}%</span>
+            </div>
+
+            <div className="progressBar">
+              <div style={{ width: `${progress}%` }} />
+            </div>
+
+            <div className="stageList">
+              {stages.map((stage, index) => (
+                <div
+                  key={stage}
+                  className={
+                    index <= loadingStep
+                      ? "stage active"
+                      : "stage"
+                  }
+                >
+                  <span>
+                    {index < loadingStep
+                      ? "✓"
+                      : index === loadingStep
+                      ? "•"
+                      : "○"}
+                  </span>
+                  {stage}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {report && (
+          <article className="report">
+            <div className="reportHeader">
+              <div>
+                <div className="miniLabel">
+                  SERICANT RESEARCH PREVIEW
+                </div>
+
+                <h3>{report.name}</h3>
+                <p>{report.market}</p>
+              </div>
+
+              <span className="reportPill">
+                {report.status}
+              </span>
+            </div>
+
+            <div className="reportGrid">
+              <section>
+                <div className="fieldLabel">
+                  AI-assisted overview
+                </div>
+                <p>{report.overview}</p>
+              </section>
+
+              <section>
+                <div className="fieldLabel">
+                  Structured facts
+                </div>
+                <ul>
+                  {report.facts.map((fact) => (
+                    <li key={fact}>{fact}</li>
+                  ))}
+                </ul>
+              </section>
+
+              <section>
+                <div className="fieldLabel">
+                  Provenance
+                </div>
+                <ul>
+                  {report.sources.map((source) => (
+                    <li key={source}>{source}</li>
+                  ))}
+                </ul>
+              </section>
+
+              <section>
+                <div className="fieldLabel">
+                  Research status
+                </div>
+                <p>
+                  Demo complete. Production integrations are
+                  not enabled in this public prototype.
+                </p>
+              </section>
+            </div>
+
+            <div className="notice">
+              This public prototype uses illustrative content.
+              It is not a live third-party enterprise-data feed
+              and does not imply authorisation from any specific
+              data provider.
+            </div>
+          </article>
+        )}
+      </section>
+
+      <section className="section" id="product">
+        <div className="sectionLabel">
+          03 / TECHNOLOGY
+        </div>
+
+        <h2>
+          Data → Structure → AI →
+          <br />
+          Intelligence
+        </h2>
+
+        <div
+          className="workflowGrid"
+          style={{ marginTop: "70px" }}
+        >
           {[
-            ["01", "DATA", "Enterprise information from Mainland China and Hong Kong."],
-            ["02", "STRUCTURE", "Processing, normalisation and entity resolution."],
-            ["03", "AI", "Extraction, summarisation and natural-language understanding."],
-            ["04", "INTELLIGENCE", "Searchable, understandable and actionable enterprise intelligence."]
-          ].map(([n, t, d]) => (
-            <article key={n} className="step">
-              <span>{n}</span><h3>{t}</h3><p>{d}</p>
+            [
+              "01",
+              "Data",
+              "Enterprise information from lawfully usable and appropriately authorised sources."
+            ],
+            [
+              "02",
+              "Structure",
+              "Entity resolution, normalisation and structured company information."
+            ],
+            [
+              "03",
+              "AI",
+              "AI-assisted synthesis, explanation and research workflows."
+            ],
+            [
+              "04",
+              "Intelligence",
+              "Readable, traceable and decision-oriented company intelligence."
+            ]
+          ].map(([number, title, description]) => (
+            <article key={number} className="workflowCard">
+              <span>{number}</span>
+              <h3>{title}</h3>
+              <p>{description}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section id="roadmap" className="roadmap">
-        <div className="sectionLabel">04 / ROADMAP</div>
-        <h2>Building the next generation<br />of enterprise intelligence.</h2>
-        <div className="roadmapList">
+      <section className="section" id="roadmap">
+        <div className="sectionLabel">
+          04 / ROADMAP
+        </div>
+
+        <h2>
+          Building the next generation
+          <br />
+          of enterprise intelligence.
+        </h2>
+
+        <p
+          style={{
+            marginTop: "30px",
+            maxWidth: "720px",
+            fontSize: "16px",
+            lineHeight: 1.7
+          }}
+        >
+          Current MVP: AI-assisted company understanding.
+          Roadmap: agentic company-research workflows.
+        </p>
+
+        <div
+          style={{
+            marginTop: "60px",
+            borderTop: "1px solid var(--line)"
+          }}
+        >
           {[
-            ["01", "AI Company Summary", "AVAILABLE", "Generate concise AI-powered company profiles."],
-            ["02", "AI Enterprise Search", "IN DEVELOPMENT", "Search enterprise information using natural language."],
-            ["03", "Enterprise Intelligence", "PLANNED", "Analyse relationships, changes and corporate context."],
-            ["04", "AI Research Agent", "ROADMAP", "Automate multi-step enterprise research through AI agents."]
-          ].map(([n, title, status, desc]) => (
-            <div className="roadmapItem" key={n}>
-              <span className="number">{n}</span><div><h3>{title}</h3><p>{desc}</p></div><span className="pill">{status}</span>
-            </div>
-          ))}
+            [
+              "01",
+              "AI Company Summary",
+              "AVAILABLE",
+              "Current company-summary prototype."
+            ],
+            [
+              "02",
+              "AI Enterprise Search",
+              "IN DEVELOPMENT",
+              "Search and structured research across company information."
+            ],
+            [
+              "03",
+              "Enterprise Intelligence",
+              "PLANNED",
+              "Analysis, structured insights and explainable outputs."
+            ],
+            [
+              "04",
+              "AI Research Agent",
+              "ROADMAP",
+              "Task planning, retrieval, verification and research synthesis."
+            ]
+          ].map(
+            ([number, title, status, description]) => (
+              <div
+                key={number}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns:
+                    "70px 1.2fr 2fr auto",
+                  gap: "24px",
+                  padding: "24px 0",
+                  borderBottom:
+                    "1px solid var(--line)",
+                  alignItems: "center"
+                }}
+              >
+                <span className="miniLabel">
+                  {number}
+                </span>
+
+                <strong>{title}</strong>
+
+                <span
+                  style={{
+                    fontSize: "13px",
+                    color: "var(--muted)",
+                    lineHeight: 1.5
+                  }}
+                >
+                  {description}
+                </span>
+
+                <span
+                  style={{
+                    fontSize: "9px",
+                    letterSpacing: ".14em",
+                    textTransform: "uppercase",
+                    border: "1px solid var(--line)",
+                    padding: "8px 10px"
+                  }}
+                >
+                  {status}
+                </span>
+              </div>
+            )
+          )}
         </div>
       </section>
 
-      <section id="about" className="about">
-        <div className="sectionLabel">05 / FOUNDER</div>
-        <div className="aboutGrid">
-          <div><h2>Built from<br /><em>professional experience.</em></h2></div>
+      <section className="section" id="workflow">
+        <div className="sectionLabel">
+          05 / AGENTIC DIRECTION
+        </div>
+
+        <h2>
+          A research workflow,
+          <br />
+          not a one-shot prompt.
+        </h2>
+
+        <div className="workflowGrid">
+          {[
+            [
+              "01",
+              "Interpret",
+              "Understand the research request and define the task."
+            ],
+            [
+              "02",
+              "Retrieve",
+              "Call only approved or otherwise lawfully usable information sources."
+            ],
+            [
+              "03",
+              "Resolve",
+              "Identify the correct company entity and normalise structured fields."
+            ],
+            [
+              "04",
+              "Verify",
+              "Check required fields, timestamps and cross-source consistency."
+            ],
+            [
+              "05",
+              "Synthesize",
+              "Generate bounded AI-assisted analysis over structured inputs."
+            ],
+            [
+              "06",
+              "Provenance",
+              "Show sources, timestamps and a clear distinction between facts and AI output."
+            ]
+          ].map(([number, title, description]) => (
+            <article key={number} className="workflowCard">
+              <span>{number}</span>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </article>
+          ))}
+        </div>
+
+        <p
+          style={{
+            marginTop: "28px",
+            maxWidth: "760px",
+            fontSize: "12px",
+            lineHeight: 1.6,
+            color: "var(--muted)"
+          }}
+        >
+          These agentic capabilities represent Sericant&apos;s
+          product roadmap unless specifically identified as
+          already deployed.
+        </p>
+      </section>
+
+      <section className="section" id="about">
+        <div className="sectionLabel">
+          06 / FOUNDER STORY
+        </div>
+
+        <div className="twoCol">
           <div>
-            <h3>Wilson Franck</h3>
-            <p className="role">Founder &amp; Director</p>
+            <h2>
+              Built from
+              <br />
+              <em>professional experience.</em>
+            </h2>
+          </div>
+
+          <div className="bodyCopy">
+            <div
+              className="miniLabel"
+              style={{ marginBottom: "16px" }}
+            >
+              FOUNDER-LED FROM HONG KONG
+            </div>
+
             <p>
-              Wilson Franck is a Beijing-based lawyer with professional experience
-              using Chinese enterprise information platforms. That experience led
-              to a simple observation: vast amounts of corporate information are
-              available, but users still spend significant time searching,
-              interpreting and organising it.
+              Sericant was created from first-hand
+              professional experience working with company
+              information and corporate research.
             </p>
+
             <p>
-              Sericant was established in Hong Kong to explore how AI can
-              fundamentally improve this workflow.
+              The product is being developed around a simple
+              observation: professionals may have access to
+              company information, but still spend significant
+              time searching, interpreting and organising it.
+            </p>
+
+            <p>
+              Sericant is exploring how AI can reduce that
+              friction while preserving structure, provenance
+              and professional judgement.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="hongkong">
-        <div className="sectionLabel">06 / POSITIONING</div>
-        <h2>Built in Hong Kong.<br />Connected to China.<br /><em>Designed for the world.</em></h2>
-        <div className="locationCards">
-          <div><strong>HONG KONG</strong><span>International business &amp; technology base</span></div>
-          <div><strong>MAINLAND CHINA</strong><span>Enterprise data &amp; ecosystem connectivity</span></div>
-          <div><strong>GLOBAL</strong><span>Enterprise intelligence for international users</span></div>
+      <section className="darkSection">
+        <div className="sectionLabel light">
+          07 / RESPONSIBLE AI & DATA
+        </div>
+
+        <div className="twoCol">
+          <div>
+            <h2>
+              Trust is part of
+              <br />
+              the architecture.
+            </h2>
+          </div>
+
+          <div className="bodyCopy lightCopy">
+            <p>
+              Sericant intends to activate production data
+              integrations only when relevant data rights,
+              licensing and processing arrangements are in
+              place.
+            </p>
+
+            <p>
+              Source facts and AI-generated interpretation are
+              intended to be clearly separated, with provenance
+              and timestamps preserved alongside research
+              outputs.
+            </p>
+
+            <Link
+              href="/responsible-ai-data"
+              className="textLink"
+            >
+              Read our Responsible AI & Data approach →
+            </Link>
+          </div>
         </div>
       </section>
 
-      <section className="brandStory">
-        <div className="sectionLabel">07 / THE NAME</div>
-        <h2>From Serica<br />to <em>Sericant.</em></h2>
-        <p>
-          Sericant is a coined name inspired by “Serica”, an ancient Western term
-          associated with China and the land of silk. The name reflects our vision
-          of building a modern bridge between Chinese enterprise information and
-          the global business community.
-        </p>
-        <div className="brandLine">CONNECTING CHINESE ENTERPRISE INTELLIGENCE TO THE WORLD.</div>
+      <section className="hongkongSection">
+        <div className="sectionLabel light">
+          08 / HONG KONG
+        </div>
+
+        <h2>
+          Built in Hong Kong.
+          <br />
+          Connected to China.
+          <br />
+          <em>Designed for the world.</em>
+        </h2>
+
+        <div className="hkGrid">
+          <div>
+            <strong>HONG KONG</strong>
+            <span>
+              International technology, professional services
+              and commercialisation base.
+            </span>
+          </div>
+
+          <div>
+            <strong>MAINLAND CHINA</strong>
+            <span>
+              Enterprise-information context and future
+              compliant data partnerships.
+            </span>
+          </div>
+
+          <div>
+            <strong>GLOBAL USERS</strong>
+            <span>
+              Professionals who need accessible company
+              intelligence for cross-border decisions.
+            </span>
+          </div>
+        </div>
       </section>
 
-      <section className="contact">
-        <div className="sectionLabel">08 / CONTACT</div>
-        <h2>Let’s build the<br /><em>intelligence layer.</em></h2>
-        <a href="mailto:hello@sericant.com" className="contactEmail">hello@sericant.com ↗</a>
-        <p>Sericant Limited · Hong Kong</p>
+      <section className="section">
+        <div className="sectionLabel">
+          09 / THE NAME
+        </div>
+
+        <div className="twoCol">
+          <div>
+            <h2>
+              From Serica
+              <br />
+              to <em>Sericant.</em>
+            </h2>
+          </div>
+
+          <div className="bodyCopy">
+            <p>
+              Sericant is a coined name inspired by
+              &quot;Serica&quot;, an ancient Western name
+              associated with China and the land of silk.
+            </p>
+
+            <p>
+              The name reflects a vision of building a modern
+              bridge between Chinese enterprise information and
+              the global business community.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="contact" id="contact">
+        <div className="sectionLabel">
+          10 / CONTACT
+        </div>
+
+        <h2>
+          Let&apos;s build the
+          <br />
+          intelligence layer.
+        </h2>
+
+        <a
+          href="mailto:hello@sericant.com"
+          className="contactEmail"
+        >
+          hello@sericant.com ↗
+        </a>
+
+        <p>
+          Sericant Limited · Hong Kong
+        </p>
       </section>
 
       <footer>
-        <div className="brand">SERICANT<span>.</span></div>
-        <div>AI-POWERED ENTERPRISE DATA INTELLIGENCE</div>
-        <div>© 2026 Sericant Limited</div>
+        <div className="footerBrand">
+          SERICANT
+        </div>
+
+        <div className="footerLinks">
+          <Link href="/responsible-ai-data">
+            Responsible AI & Data
+          </Link>
+
+          <Link href="/privacy">
+            Privacy
+          </Link>
+
+          <Link href="/terms">
+            Terms
+          </Link>
+        </div>
+
+        <div>
+          © 2026 Sericant Limited
+        </div>
       </footer>
     </main>
   );
