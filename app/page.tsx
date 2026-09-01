@@ -134,6 +134,9 @@ export default function Home() {
           <a href="#workflow">Technology</a>
           <a href="#roadmap">Roadmap</a>
           <a href="#about">About</a>
+          <Link href="/due-diligence">
+  Due Diligence
+</Link>
           <Link href="/responsible-ai-data">
             Responsible AI & Data
           </Link>
@@ -176,15 +179,19 @@ export default function Home() {
           decision-ready intelligence for cross-border research.
         </p>
 
-        <div className="heroActions">
-          <a href="#demo" className="btn primary">
-            Explore the prototype
-          </a>
+<div className="heroActions">
+  <a href="#demo" className="btn primary">
+    Explore the prototype
+  </a>
 
-          <a href="#about" className="btn secondary">
-            About Sericant
-          </a>
-        </div>
+  <Link href="/due-diligence" className="btn secondary">
+    Company Due Diligence — US$149
+  </Link>
+
+  <a href="#about" className="btn secondary">
+    About Sericant
+  </a>
+</div>
 
         <div className="heroMeta">
           <span>HONG KONG COMPANY</span>
@@ -385,10 +392,95 @@ export default function Home() {
           </article>
         )}
       </section>
+      <section className="section" id="due-diligence">
+  <div className="sectionLabel">
+    03 / COMPANY DUE DILIGENCE
+  </div>
+
+  <div className="twoCol">
+    <div>
+      <div className="miniLabel">
+        AVAILABLE NOW
+      </div>
+
+      <h2>
+        Company intelligence,
+        <br />
+        <em>delivered as a report.</em>
+      </h2>
+    </div>
+
+    <div className="bodyCopy">
+      <p>
+        Sericant provides structured, AI-assisted company research
+        for professionals evaluating Mainland Chinese and Hong Kong
+        companies.
+      </p>
+
+      <p>
+        Each Company Due Diligence Report combines structured
+        research, source review and AI-assisted synthesis into a
+        focused professional research deliverable.
+      </p>
+
+      <div
+        style={{
+          marginTop: "32px",
+          paddingTop: "28px",
+          borderTop: "1px solid var(--line)"
+        }}
+      >
+        <div className="miniLabel">
+          COMPANY DUE DILIGENCE REPORT
+        </div>
+
+        <div
+          style={{
+            fontSize: "clamp(42px, 6vw, 72px)",
+            fontWeight: 700,
+            lineHeight: 1,
+            margin: "14px 0 18px"
+          }}
+        >
+          US$149
+        </div>
+
+        <p>
+          One report for one target company.
+        </p>
+
+        <div
+          style={{
+            display: "flex",
+            gap: "12px",
+            flexWrap: "wrap",
+            marginTop: "28px"
+          }}
+        >
+          <Link
+            href="/due-diligence"
+            className="btn primary"
+          >
+            View Report Service →
+          </Link>
+
+          <a
+            href="https://buy.stripe.com/dRm3cx62edgF14octq3Nm01"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn secondary"
+          >
+            Order Now — US$149
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       <section className="section" id="product">
         <div className="sectionLabel">
-          03 / TECHNOLOGY
+          04 / TECHNOLOGY
         </div>
 
         <h2>
@@ -434,7 +526,7 @@ export default function Home() {
 
       <section className="section" id="roadmap">
         <div className="sectionLabel">
-          04 / ROADMAP
+          05 / ROADMAP
         </div>
 
         <h2>
@@ -536,7 +628,7 @@ export default function Home() {
 
       <section className="section" id="workflow">
         <div className="sectionLabel">
-          05 / AGENTIC DIRECTION
+          06 / AGENTIC DIRECTION
         </div>
 
         <h2>
@@ -603,7 +695,7 @@ export default function Home() {
 
       <section className="section" id="about">
         <div className="sectionLabel">
-          06 / FOUNDER STORY
+          07 / FOUNDER STORY
         </div>
 
         <div className="twoCol">
@@ -647,7 +739,7 @@ export default function Home() {
 
       <section className="darkSection">
         <div className="sectionLabel light">
-          07 / RESPONSIBLE AI & DATA
+          08 / RESPONSIBLE AI & DATA
         </div>
 
         <div className="twoCol">
@@ -686,7 +778,7 @@ export default function Home() {
 
       <section className="hongkongSection">
         <div className="sectionLabel light">
-          08 / HONG KONG
+          09 / HONG KONG
         </div>
 
         <h2>
@@ -726,7 +818,7 @@ export default function Home() {
 
       <section className="section">
         <div className="sectionLabel">
-          09 / THE NAME
+          10 / THE NAME
         </div>
 
         <div className="twoCol">
@@ -756,7 +848,7 @@ export default function Home() {
 
       <section className="contact" id="contact">
         <div className="sectionLabel">
-          10 / CONTACT
+          11 / CONTACT
         </div>
 
         <h2>
