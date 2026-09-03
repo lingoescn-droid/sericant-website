@@ -14,6 +14,23 @@ type IntakePayload = {
   researchPurpose?: unknown;
   specificQuestions?: unknown;
   additionalInformation?: unknown;
+
+  // Stripe Checkout Session ID passed from the intake page.
+  sessionId?: unknown;
+};
+
+type StripeCheckoutSession = {
+  id?: string;
+  status?: string | null;
+  payment_status?: string | null;
+  payment_link?: string | null;
+  payment_intent?: string | null;
+  amount_total?: number | null;
+  currency?: string | null;
+  customer_details?: {
+    email?: string | null;
+    name?: string | null;
+  } | null;
 };
 
 function clean(value: unknown, maxLength = 2000) {
@@ -53,6 +70,29 @@ function createOrderId() {
   return `SER-DD-${date}-${random}`;
 }
 
+function formatStripeAmount(
+  amount: number | null | undefined,
+  currency: string | null | undefined
+) {
+  if (
+    typeof amount !== "number" ||
+    !currency
+  ) {
+    return "Not available";
+  }
+
+  const code = currency.toUpperCase();
+
+  try {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: code,
+    }).format(amount / 100);
+  } catch {
+    return `${code} ${(amount / 100).toFixed(2)}`;
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = (await request.json()) as IntakePayload;
@@ -60,16 +100,30 @@ export async function POST(request: NextRequest) {
     const customerName = clean(body.customerName, 150);
     const email = clean(body.email, 254);
     const companyLegalName = clean(body.companyLegalName, 300);
-    const companyChineseName = clean(body.companyChineseName, 300);
+    const companyChineseName = clean(
+      body.companyChineseName,
+      300
+    );
     const jurisdiction = clean(body.jurisdiction, 100);
-    const registrationNumber = clean(body.registrationNumber, 150);
+    const registrationNumber = clean(
+      body.registrationNumber,
+      150
+    );
     const website = clean(body.website, 500);
-    const researchPurpose = clean(body.researchPurpose, 300);
-    const specificQuestions = clean(body.specificQuestions, 5000);
+    const researchPurpose = clean(
+      body.researchPurpose,
+      300
+    );
+    const specificQuestions = clean(
+      body.specificQuestions,
+      5000
+    );
     const additionalInformation = clean(
       body.additionalInformation,
       5000
     );
+
+    const sessionId = clean(body.sessionId, 300);
 
     if (
       !customerName ||
@@ -101,13 +155,161 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    /*
+      Payment verification.
+      The intake form must originate from a completed Stripe
+      Checkout Session belonging to Sericant's Due Diligence
+      Payment Link.
+    */
+
+    if (!sessionId) {
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "Payment session is missing.",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+
+    if (!sessionId.startsWith("cs_")) {
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "Invalid payment session.",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+
+    const stripeSecretKey =
+      process.env.STRIPE_SECRET_KEY;
+
+    const expectedPaymentLinkId =
+      process.env.STRIPE_PAYMENT_LINK_ID;
+
+    if (
+      !stripeSecretKey ||
+      !expectedPaymentLinkId
+    ) {
+      console.error(
+        "Stripe payment verification configuration is missing."
+      );
+
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "Server configuration error.",
+        },
+        {
+          status: 500,
+        }
+      );
+    }
+
+    const stripeResponse = await fetch(
+      `https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(
+        sessionId
+      )}`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${stripeSecretKey}`,
+        },
+        cache: "no-store",
+      }
+    );
+
+    if (!stripeResponse.ok) {
+      console.error(
+        "Unable to retrieve Stripe Checkout Session:",
+        await stripeResponse.text()
+      );
+
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "Unable to verify payment.",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+
+    const stripeSession =
+      (await stripeResponse.json()) as StripeCheckoutSession;
+
+    if (
+      stripeSession.payment_status !== "paid" ||
+      stripeSession.status !== "complete"
+    ) {
+      console.warn(
+        "Stripe Checkout Session is not paid or complete:",
+        {
+          sessionId,
+          paymentStatus:
+            stripeSession.payment_status,
+          status: stripeSession.status,
+        }
+      );
+
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "Payment has not been completed.",
+        },
+        {
+          status: 403,
+        }
+      );
+    }
+
+    if (
+      stripeSession.payment_link !==
+      expectedPaymentLinkId
+    ) {
+      console.warn(
+        "Stripe Checkout Session came from an unexpected Payment Link:",
+        {
+          sessionId,
+          paymentLink:
+            stripeSession.payment_link,
+        }
+      );
+
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "Payment could not be verified.",
+        },
+        {
+          status: 403,
+        }
+      );
+    }
+
+    /*
+      Email configuration.
+    */
+
     const apiKey = process.env.RESEND_API_KEY;
+
     const notificationEmail =
       process.env.ORDER_NOTIFICATION_EMAIL;
+
     const fromEmail =
       process.env.RESEND_FROM_EMAIL;
 
-    if (!apiKey || !notificationEmail || !fromEmail) {
+    if (
+      !apiKey ||
+      !notificationEmail ||
+      !fromEmail
+    ) {
       console.error(
         "Due Diligence intake email configuration is missing."
       );
@@ -123,8 +325,32 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    /*
+      At this point:
+      - required intake data is valid
+      - Stripe Checkout Session exists
+      - payment is complete and paid
+      - payment came from the expected Payment Link
+    */
+
     const orderId = createOrderId();
     const submittedAt = new Date().toISOString();
+
+    const stripeAmount = formatStripeAmount(
+      stripeSession.amount_total,
+      stripeSession.currency
+    );
+
+    const stripePaymentIntent =
+      stripeSession.payment_intent || "Not available";
+
+    const stripeCheckoutEmail =
+      stripeSession.customer_details?.email ||
+      "Not available";
+
+    /*
+      Internal Sericant notification.
+    */
 
     const internalHtml = `
       <div style="font-family:Arial,sans-serif;line-height:1.6;color:#111">
@@ -138,6 +364,35 @@ export async function POST(request: NextRequest) {
         <p>
           <strong>Submitted:</strong>
           ${escapeHtml(submittedAt)}
+        </p>
+
+        <hr />
+
+        <h2>Payment</h2>
+
+        <p>
+          <strong>Payment status:</strong>
+          Paid
+        </p>
+
+        <p>
+          <strong>Amount:</strong>
+          ${escapeHtml(stripeAmount)}
+        </p>
+
+        <p>
+          <strong>Stripe Checkout Session:</strong>
+          ${escapeHtml(sessionId)}
+        </p>
+
+        <p>
+          <strong>Stripe Payment Intent:</strong>
+          ${escapeHtml(stripePaymentIntent)}
+        </p>
+
+        <p>
+          <strong>Stripe checkout email:</strong>
+          ${escapeHtml(stripeCheckoutEmail)}
         </p>
 
         <hr />
@@ -163,7 +418,9 @@ export async function POST(request: NextRequest) {
 
         <p>
           <strong>Chinese name:</strong>
-          ${escapeHtml(companyChineseName || "Not provided")}
+          ${escapeHtml(
+            companyChineseName || "Not provided"
+          )}
         </p>
 
         <p>
@@ -173,12 +430,16 @@ export async function POST(request: NextRequest) {
 
         <p>
           <strong>Registration number:</strong>
-          ${escapeHtml(registrationNumber || "Not provided")}
+          ${escapeHtml(
+            registrationNumber || "Not provided"
+          )}
         </p>
 
         <p>
           <strong>Website:</strong>
-          ${escapeHtml(website || "Not provided")}
+          ${escapeHtml(
+            website || "Not provided"
+          )}
         </p>
 
         <h2>Research Request</h2>
@@ -225,7 +486,8 @@ export async function POST(request: NextRequest) {
     );
 
     if (!internalResponse.ok) {
-      const failure = await internalResponse.text();
+      const failure =
+        await internalResponse.text();
 
       console.error(
         "Failed to send internal intake notification:",
@@ -245,8 +507,10 @@ export async function POST(request: NextRequest) {
 
     /*
       Customer acknowledgement.
-      This is best-effort: the Sericant internal order has
-      already been received if execution reaches this point.
+
+      Best effort:
+      once execution reaches this point,
+      Sericant has already received the internal order.
     */
 
     const customerHtml = `
@@ -268,6 +532,10 @@ export async function POST(request: NextRequest) {
         <p>
           <strong>Target company:</strong>
           ${escapeHtml(companyLegalName)}
+        </p>
+
+        <p>
+          Your payment has been confirmed.
         </p>
 
         <p>
@@ -323,6 +591,16 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       ok: true,
       orderId,
+      payment: {
+        verified: true,
+        checkoutSessionId: sessionId,
+        paymentIntent:
+          stripeSession.payment_intent || null,
+        amountTotal:
+          stripeSession.amount_total || null,
+        currency:
+          stripeSession.currency || null,
+      },
     });
   } catch (error) {
     console.error(
