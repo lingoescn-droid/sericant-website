@@ -1,254 +1,35 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Sericant website privacy policy."
+  description: "How Sericant handles website, enquiry and company research information.",
+  alternates: { canonical: "/privacy" }
 };
 
-export default function Page() {
+const sections = [
+  ["1. Scope", <p>This Policy explains how Sericant Limited, Hong Kong (“Sericant”, “we”, “us”) handles information relating to website visitors, contacts, scope requests and customers of our company intelligence services. The public research prototype remains illustrative and does not provide a live third-party company-data search.</p>],
+  ["2. Information you provide", <><p>We may receive your name, work email, correspondence, target-company identifiers, research purpose, questions and other information you choose to submit. If you purchase a service, we may also receive payment status, transaction identifiers and limited billing details from our payment provider; Sericant does not need to receive your full card number.</p><p>Please do not submit identity documents, passwords, payment-card details, authentication codes or unnecessary sensitive personal information through the scope-request form.</p></>],
+  ["3. Research information", <p>To perform an accepted engagement, Sericant may process corporate records and information about directors, shareholders, officers or other persons connected with a target company where relevant to the stated business-research purpose and lawfully available. Coverage and permitted use depend on the source, jurisdiction and applicable contractual or legal requirements.</p>],
+  ["4. Technical information", <p>Hosting, infrastructure and security providers may process IP address, browser and device information, timestamps, request logs and security events needed to deliver and protect the website. If analytics or non-essential cookies are introduced, this Policy and any required consent mechanism will be updated.</p>],
+  ["5. How information is used", <><p>We may use information to identify the requested company, assess and confirm scope, communicate with you, process and deliver an accepted service, maintain records, prevent abuse, improve our workflow, protect the website and comply with applicable obligations.</p><p>Information submitted for one engagement is not automatically treated as permission to publish it, resell it or use it to train a public model.</p></>],
+  ["6. Service providers and international processing", <p>Sericant may use providers for hosting, communications, payment processing, security, document production and AI-assisted processing. Depending on the service and configuration, information may be processed outside Hong Kong. Sericant intends to assess data category, source rights, purpose and appropriate safeguards before activating production integrations or transferring regulated information.</p>],
+  ["7. Retention", <p>Scope requests that do not proceed may be retained for a limited period for communication, fraud prevention and recordkeeping. Customer, transaction and report records may be retained for the period reasonably needed to provide the service, address questions, protect legal rights and meet applicable obligations. Information will be deleted or de-identified when it is no longer reasonably required, subject to technical backups and lawful retention requirements.</p>],
+  ["8. Security", <p>Sericant applies proportionate administrative and technical safeguards and intends to expand access controls, logging, vendor review and incident procedures as the service develops. No internet transmission or storage system can be guaranteed completely secure.</p>],
+  ["9. Your choices and requests", <p>You may ask about, correct or request deletion of information you submitted, subject to identity verification and applicable exceptions. You may also object to non-essential communications. Requests should be sent to <a href="mailto:hello@sericant.com">hello@sericant.com</a>.</p>],
+  ["10. Third-party links and payments", <p>The website may link to third-party services, including a payment provider. Their privacy practices are governed by their own notices. Sericant should not be sent payment credentials by email or through the research form.</p>],
+  ["11. Changes and contact", <><p>This Policy may be updated as the service, data sources or processing activities change. The current revision date will appear above.</p><p>Privacy enquiries: <a href="mailto:hello@sericant.com">hello@sericant.com</a><br />Sericant Limited · Hong Kong</p></>]
+] as const;
+
+export default function PrivacyPage() {
   return (
     <main className="legalPage">
-      <header className="simpleHeader">
-        <Link href="/" className="logo">
-          SERICANT
-        </Link>
-
-        <Link href="/" className="back">
-          ← Back to home
-        </Link>
-      </header>
-
+      <header className="simpleHeader"><Link href="/" className="logo">SERICANT</Link><Link href="/" className="back">← Back to home</Link></header>
       <article className="legalContent">
         <div className="sectionLabel">PRIVACY POLICY</div>
-
-        <h1
-          style={{
-            fontSize: "48px",
-            lineHeight: 1.05,
-            letterSpacing: "-0.04em",
-            marginBottom: "18px"
-          }}
-        >
-          Privacy Policy
-        </h1>
-
-        <p
-          className="lede"
-          style={{
-            marginBottom: "52px"
-          }}
-        >
-          Last updated: 26 August 2026
-        </p>
-
-        <section style={{ marginBottom: "44px" }}>
-          <h2
-            style={{
-              fontSize: "30px",
-              lineHeight: 1.2,
-              letterSpacing: "-0.02em",
-              marginBottom: "12px"
-            }}
-          >
-            1. Current website scope
-          </h2>
-
-          <p>
-            This website currently functions as the corporate website of
-            Sericant Limited and as an interactive product demonstration for
-            Sericant&apos;s company-research concept.
-          </p>
-
-          <p>
-            The public demonstration does not currently require account
-            registration, does not provide a live third-party company-data
-            service and does not represent a production enterprise-information
-            platform.
-          </p>
-        </section>
-
-        <section style={{ marginBottom: "44px" }}>
-          <h2
-            style={{
-              fontSize: "30px",
-              lineHeight: 1.2,
-              letterSpacing: "-0.02em",
-              marginBottom: "12px"
-            }}
-          >
-            2. Information you provide
-          </h2>
-
-          <p>
-            If you contact Sericant by email or otherwise communicate with us,
-            we may receive the contact information, correspondence and other
-            information that you choose to provide.
-          </p>
-        </section>
-
-        <section style={{ marginBottom: "44px" }}>
-          <h2
-            style={{
-              fontSize: "30px",
-              lineHeight: 1.2,
-              letterSpacing: "-0.02em",
-              marginBottom: "12px"
-            }}
-          >
-            3. Technical information
-          </h2>
-
-          <p>
-            Our hosting, infrastructure and security service providers may
-            process standard technical information in connection with operating
-            and protecting this website, such as IP addresses, browser and
-            device information, request logs, timestamps and security events.
-          </p>
-        </section>
-
-        <section style={{ marginBottom: "44px" }}>
-          <h2
-            style={{
-              fontSize: "30px",
-              lineHeight: 1.2,
-              letterSpacing: "-0.02em",
-              marginBottom: "12px"
-            }}
-          >
-            4. How information may be used
-          </h2>
-
-          <p>
-            Information may be used to respond to enquiries, operate and secure
-            the website, maintain the product demonstration, investigate
-            technical issues, improve Sericant&apos;s services and comply with
-            applicable legal or regulatory requirements.
-          </p>
-        </section>
-
-        <section style={{ marginBottom: "44px" }}>
-          <h2
-            style={{
-              fontSize: "30px",
-              lineHeight: 1.2,
-              letterSpacing: "-0.02em",
-              marginBottom: "12px"
-            }}
-          >
-            5. Company-research demo data
-          </h2>
-
-          <p>
-            The current public company-research experience is illustrative. It
-            is not presented as a live third-party enterprise-data feed and
-            should not be understood as evidence that Sericant has activated
-            any particular production data integration.
-          </p>
-
-          <p>
-            Sericant intends to activate production data sources only where
-            relevant data rights, licensing, contractual permissions and
-            processing arrangements are in place.
-          </p>
-        </section>
-
-        <section style={{ marginBottom: "44px" }}>
-          <h2
-            style={{
-              fontSize: "30px",
-              lineHeight: 1.2,
-              letterSpacing: "-0.02em",
-              marginBottom: "12px"
-            }}
-          >
-            6. Data retention and security
-          </h2>
-
-          <p>
-            Sericant intends to retain information only for as long as reasonably
-            necessary for the purpose for which it was collected, subject to
-            applicable legal, operational and security requirements.
-          </p>
-
-          <p>
-            Appropriate technical and organisational safeguards are intended to
-            be introduced proportionately as the product progresses from public
-            demonstration to controlled production use.
-          </p>
-        </section>
-
-        <section style={{ marginBottom: "44px" }}>
-          <h2
-            style={{
-              fontSize: "30px",
-              lineHeight: 1.2,
-              letterSpacing: "-0.02em",
-              marginBottom: "12px"
-            }}
-          >
-            7. Service providers and international processing
-          </h2>
-
-          <p>
-            Sericant may use technology, hosting, communications and other
-            service providers to support its website and operations. Depending
-            on the service used, technical or contact information may be
-            processed in jurisdictions outside Hong Kong.
-          </p>
-
-          <p>
-            As Sericant develops production company-intelligence services, any
-            cross-border handling of regulated company or personal information
-            will be assessed separately in accordance with applicable data,
-            contractual and regulatory requirements.
-          </p>
-        </section>
-
-        <section style={{ marginBottom: "44px" }}>
-          <h2
-            style={{
-              fontSize: "30px",
-              lineHeight: 1.2,
-              letterSpacing: "-0.02em",
-              marginBottom: "12px"
-            }}
-          >
-            8. Future product changes
-          </h2>
-
-          <p>
-            If Sericant introduces user accounts, paid services, production
-            company-data integrations, analytics, cookies, monitoring features
-            or other material data-processing activities, this Privacy Policy
-            may be updated to reflect those changes.
-          </p>
-        </section>
-
-        <section style={{ marginBottom: "20px" }}>
-          <h2
-            style={{
-              fontSize: "30px",
-              lineHeight: 1.2,
-              letterSpacing: "-0.02em",
-              marginBottom: "12px"
-            }}
-          >
-            9. Contact
-          </h2>
-
-          <p>
-            Privacy and general enquiries:{" "}
-            <a href="mailto:hello@sericant.com">
-              hello@sericant.com
-            </a>
-          </p>
-
-          <p>
-            Sericant Limited
-            <br />
-            Hong Kong
-          </p>
-        </section>
+        <h1 style={{ fontSize: "48px", lineHeight: 1.05, letterSpacing: "-0.04em", marginBottom: "18px" }}>Privacy Policy</h1>
+        <p className="lede" style={{ marginBottom: "52px" }}>Last updated: 4 September 2026</p>
+        {sections.map(([title, content]) => <section key={title}><h2>{title}</h2>{content}</section>)}
       </article>
     </main>
   );

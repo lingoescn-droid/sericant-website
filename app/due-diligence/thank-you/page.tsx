@@ -89,7 +89,7 @@ export default function DueDiligenceThankYouPage() {
               marginBottom: "18px",
             }}
           >
-            Your payment for the Sericant Company Due Diligence Report
+            Your payment for the Sericant Company Intelligence Brief
             has been received.
           </p>
 

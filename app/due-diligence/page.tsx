@@ -1,7 +1,12 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 
-const STRIPE_PAYMENT_LINK =
-  "https://buy.stripe.com/dRm3cx62edgF14octq3Nm01";
+export const metadata: Metadata = {
+  title: "China & Hong Kong Company Intelligence Brief",
+  description:
+    "Request a source-based company intelligence brief for a Mainland Chinese or Hong Kong company. Scope and timing are confirmed before payment.",
+  alternates: { canonical: "/due-diligence" }
+};
 
 export default function DueDiligencePage() {
   return (
@@ -12,58 +17,54 @@ export default function DueDiligencePage() {
         </Link>
 
         <nav className="desktopNav">
-          <Link href="/#product">Product</Link>
-          <Link href="/#workflow">Technology</Link>
-          <Link href="/#roadmap">Roadmap</Link>
+          <Link href="/sample-report">Sample report</Link>
+          <Link href="/methodology">Methodology</Link>
           <Link href="/#about">About</Link>
           <Link href="/responsible-ai-data">
             Responsible AI & Data
           </Link>
         </nav>
 
-        <Link href="/#contact" className="topCta">
-          Contact
+        <Link href="/due-diligence/intake" className="topCta">
+          Check a company
         </Link>
       </header>
 
       <section className="hero">
         <div className="eyebrow">
-          COMPANY DUE DILIGENCE REPORT
+          COMPANY INTELLIGENCE BRIEF
         </div>
 
         <h1>
-          Structured company research.
+          Know who you are
           <br />
-          <em>Delivered as a professional report.</em>
+          doing business with.
+          <br />
+          <em>See the evidence clearly.</em>
         </h1>
 
         <p className="heroText">
-          Sericant provides AI-assisted company research for
-          professionals who need a clearer understanding of
-          Mainland Chinese and Hong Kong companies.
+          Source-based company intelligence for professionals evaluating
+          Mainland Chinese and Hong Kong counterparties, delivered in clear
+          English with traceable evidence.
         </p>
 
         <div className="heroActions">
-          <a
-            href={STRIPE_PAYMENT_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn primary"
-          >
-            Order Report — US$149
-          </a>
+          <Link href="/due-diligence/intake" className="btn primary">
+            Check a company
+          </Link>
 
-          <Link href="/#demo" className="btn secondary">
-            Explore the prototype
+          <Link href="/sample-report" className="btn secondary">
+            View sample report
           </Link>
         </div>
 
         <div className="heroMeta">
-          <span>US$149 / REPORT</span>
+          <span>INTRODUCTORY PRICE FROM US$149</span>
           <i />
-          <span>AI-ASSISTED RESEARCH</span>
+          <span>SCOPE CONFIRMED FIRST</span>
           <i />
-          <span>SOURCE-BASED OUTPUT</span>
+          <span>2–3 BUSINESS DAYS</span>
         </div>
       </section>
 
@@ -83,21 +84,21 @@ export default function DueDiligencePage() {
 
           <div className="bodyCopy">
             <p>
-              Each report is prepared around a specific target
+              Each brief is prepared around a specific target
               company and is designed to organise relevant public
               and lawfully usable information into a clear,
               structured research output.
             </p>
 
             <p>
-              The report is intended to support commercial,
+              The brief is intended to support commercial,
               investment, partnership and cross-border research.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" id="product">
         <div className="sectionLabel">
           02 / STANDARD SCOPE
         </div>
@@ -121,8 +122,8 @@ export default function DueDiligencePage() {
             ],
             [
               "04",
-              "Risk signals",
-              "Publicly available legal, regulatory, operational or reputational risk indicators where relevant."
+              "Public-record signals",
+              "Relevant legal, regulatory, operational or reputational events found in available sources."
             ],
             [
               "05",
@@ -160,7 +161,7 @@ export default function DueDiligencePage() {
 
           <div className="bodyCopy lightCopy">
             <p>
-              Sericant&apos;s Company Due Diligence Report is an
+              Sericant&apos;s Company Intelligence Brief is an
               informational research product. It is not a legal
               opinion, audit, credit rating, investment
               recommendation, formal KYC determination or AML
@@ -192,23 +193,23 @@ export default function DueDiligencePage() {
           {[
             [
               "01",
-              "Order",
-              "Purchase one Company Due Diligence Report through secure Stripe checkout."
+              "Submit",
+              "Provide the target company identity and your principal research questions."
             ],
             [
               "02",
-              "Submit company details",
-              "After payment, provide the target company name, jurisdiction, website and your key research questions."
+              "Confirm",
+              "Sericant confirms the correct entity, available scope, fee and estimated delivery date."
             ],
             [
               "03",
-              "Research",
-              "Sericant reviews relevant information and prepares a structured research report."
+              "Authorise",
+              "Accept the confirmed scope and complete payment through secure Stripe checkout."
             ],
             [
               "04",
-              "Delivery",
-              "The completed report is delivered electronically to the email address provided."
+              "Research & delivery",
+              "Sericant prepares, reviews and delivers the brief electronically."
             ]
           ].map(([number, title, description]) => (
             <article key={number} className="workflowCard">
@@ -238,7 +239,7 @@ export default function DueDiligencePage() {
         >
           <div>
             <div className="miniLabel">
-              COMPANY DUE DILIGENCE REPORT
+              COMPANY INTELLIGENCE BRIEF
             </div>
 
             <h2
@@ -247,7 +248,7 @@ export default function DueDiligencePage() {
                 fontSize: "clamp(36px, 5vw, 64px)"
               }}
             >
-              US$149
+              From US$149
             </h2>
 
             <p
@@ -258,26 +259,37 @@ export default function DueDiligencePage() {
                 lineHeight: 1.7
               }}
             >
-              One report for one target company.
-              Additional scope or specialist research may require
-              a separate quotation.
+              During the introductory promotional period, the standard brief
+              starts from US$149 and covers one identifiable Mainland Chinese or
+              Hong Kong company. Final scope, fee and estimated delivery date
+              are confirmed before payment. Complex ownership, multiple
+              entities or specialist research may require a separate quotation.
             </p>
           </div>
 
-          <a
-            href={STRIPE_PAYMENT_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn primary"
-          >
-            Order Report →
-          </a>
+          <Link href="/due-diligence/intake" className="btn primary">
+            Request scope confirmation →
+          </Link>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="sectionLabel">06 / BEFORE YOU REQUEST</div>
+        <div className="twoCol">
+          <div>
+            <h2>Clear scope.<br /><em>No surprise charge.</em></h2>
+          </div>
+          <div className="bodyCopy">
+            <p>Submitting a request does not create a payment obligation. Sericant first checks whether the target entity can be identified and whether the requested work fits the standard brief.</p>
+            <p>Standard delivery is normally estimated at 2–3 business days after payment and receipt of sufficient identifying information. The confirmed proposal controls if a different timeframe is stated.</p>
+            <p><Link href="/refund-delivery" className="textLink">Read delivery and cancellation policy →</Link></p>
+          </div>
         </div>
       </section>
 
       <section className="contact">
         <div className="sectionLabel">
-          06 / QUESTIONS
+          07 / QUESTIONS
         </div>
 
         <h2>
@@ -305,6 +317,10 @@ export default function DueDiligencePage() {
           <Link href="/responsible-ai-data">
             Responsible AI & Data
           </Link>
+
+          <Link href="/methodology">Methodology</Link>
+
+          <Link href="/sample-report">Sample report</Link>
 
           <Link href="/privacy">
             Privacy

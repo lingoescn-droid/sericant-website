@@ -1,33 +1,56 @@
-# Sericant Website v3 — Cyberport Review Edition
+# Sericant Website — P0 Sellable Release
 
-This version is designed to align the public website with the FINAL OPC Hub @ Cyberport application materials.
+This Next.js site presents Sericant's current Company Intelligence Brief and keeps future platform capabilities clearly separated from the paid research service.
 
-## Key changes from v2
-- Stronger "AI-native company intelligence" positioning
-- Interactive professional Company Research demo
-- Research pipeline: Interpret → Retrieve → Resolve → Verify → Synthesize → Provenance
-- Responsible AI & Data page
-- Founder story aligned with application materials
-- Explicit current-vs-roadmap language
-- Privacy and Terms pages
-- robots.txt and sitemap.xml through Next.js metadata routes
-- Responsive desktop / iPhone / Android layout
+## Customer journey
 
-## Important positioning
-- The public company research experience is an illustrative demo.
-- It is not a live third-party enterprise-data feed.
-- No specific company-data provider is named or represented as authorized.
-- Production integrations are described as future and conditional on licensing / authorization / compliance arrangements.
-- Agentic workflows are roadmap items unless actually deployed.
+1. The customer reviews the service, methodology and format sample.
+2. The customer submits a scope request at `/due-diligence/intake`.
+3. Sericant confirms the target entity, scope, fee and estimated delivery date by email.
+4. Sericant sends an approved Stripe payment link only after the customer accepts the scope.
+5. Research begins after payment and sufficient identifying information are received.
 
-## Deploy
-Replace the files in the existing GitHub repository connected to Vercel.
-Do NOT create a new Vercel project or change Alibaba Cloud DNS.
+The public website deliberately does not link directly to Stripe.
 
-Expected production domain:
-https://www.sericant.com
+## Environment variables
 
-## Before publishing
-- Confirm the public founder biography is acceptable.
-- Consider replacing the Gmail address with a Sericant domain email later.
-- Review Privacy and Terms before enabling accounts, payments, cookies/analytics or production data.
+The scope-request API requires:
+
+- `RESEND_API_KEY`
+- `ORDER_NOTIFICATION_EMAIL`
+- `RESEND_FROM_EMAIL`
+
+Stripe secrets are not required by the public scope-request form. Payment confirmation and fulfilment should be handled through the approved payment workflow after scope confirmation.
+
+## Local development
+
+```bash
+npm install
+npm run dev
+```
+
+## Verification
+
+```bash
+npm run typecheck
+npm run build
+```
+
+GitHub Actions runs both checks for pull requests and changes to `main`.
+
+## Deployment
+
+The existing GitHub repository is connected to the current Vercel project. Do not create another Vercel project or change DNS. Review the preview deployment before merging to `main`.
+
+## Required owner review before production
+
+- Introductory pricing is confirmed as starting from US$149.
+- Standard delivery is confirmed as 2–3 business days.
+- Service Terms, Hong Kong governing law, fee-capped liability, Privacy Policy,
+  and the Delivery and Cancellation Policy have been approved in principle by
+  the owner and remain subject to final pre-publication proofreading.
+- Configure the Resend variables and test both internal and customer emails.
+- Update the Stripe product description and branding to match the accepted scope.
+- Do not publish the founder's name, photograph or biography. Publish only
+  approved company-level information.
+- Replace the fictional format sample with a source-cleared real or anonymised sample when available.

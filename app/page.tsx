@@ -131,38 +131,36 @@ export default function Home() {
 
         <nav className="desktopNav">
           <a href="#product">Product</a>
-          <a href="#workflow">Technology</a>
+          <Link href="/methodology">Methodology</Link>
           <a href="#roadmap">Roadmap</a>
           <a href="#about">About</a>
-          <Link href="/due-diligence">
-  Due Diligence
-</Link>
+          <Link href="/due-diligence">Reports</Link>
           <Link href="/responsible-ai-data">
             Responsible AI & Data
           </Link>
         </nav>
 
-        <a href="#contact" className="topCta">
-          Contact
-        </a>
+        <Link href="/due-diligence/intake" className="topCta">
+          Check a company
+        </Link>
       </header>
 
       <section className="hero">
         <div className="eyebrow">
-          AI-NATIVE COMPANY INTELLIGENCE
+          MAINLAND CHINA & HONG KONG COMPANY INTELLIGENCE
         </div>
 
         <h1>
-          Making Chinese
+          Know who you&apos;re
           <br />
-          Enterprise Data
+          doing business with
           <br />
-          <em>understandable.</em>
+          <em>in China.</em>
         </h1>
 
         <p className="heroText">
-          AI-native company intelligence for professionals researching
-          Mainland Chinese and Hong Kong companies.
+          Source-based company intelligence for professionals evaluating
+          Mainland Chinese and Hong Kong counterparties.
         </p>
 
         <p
@@ -174,18 +172,18 @@ export default function Home() {
             marginBottom: "28px"
           }}
         >
-          Sericant is building a professional research platform that turns
-          complex company information into structured, readable and
-          decision-ready intelligence for cross-border research.
+          Clear English research covering company identity, ownership,
+          management, business activity and relevant public-record signals —
+          with sources and limitations made visible.
         </p>
 
 <div className="heroActions">
-  <a href="#demo" className="btn primary">
-    Explore the prototype
-  </a>
+  <Link href="/due-diligence/intake" className="btn primary">
+    Check a company
+  </Link>
 
-  <Link href="/due-diligence" className="btn secondary">
-    Company Due Diligence — US$149
+  <Link href="/sample-report" className="btn secondary">
+    View sample report
   </Link>
 
   <a href="#about" className="btn secondary">
@@ -194,11 +192,11 @@ export default function Home() {
 </div>
 
         <div className="heroMeta">
-          <span>HONG KONG COMPANY</span>
+          <span>INTRODUCTORY PRICE FROM US$149</span>
           <i />
-          <span>CURRENT MVP</span>
+          <span>SCOPE CONFIRMED FIRST</span>
           <i />
-          <span>AGENTIC AI ROADMAP</span>
+          <span>INFORMATIONAL RESEARCH</span>
         </div>
       </section>
 
@@ -394,7 +392,7 @@ export default function Home() {
       </section>
       <section className="section" id="due-diligence">
   <div className="sectionLabel">
-    03 / COMPANY DUE DILIGENCE
+    03 / COMPANY INTELLIGENCE BRIEF
   </div>
 
   <div className="twoCol">
@@ -418,7 +416,7 @@ export default function Home() {
       </p>
 
       <p>
-        Each Company Due Diligence Report combines structured
+        Each Company Intelligence Brief combines structured
         research, source review and AI-assisted synthesis into a
         focused professional research deliverable.
       </p>
@@ -431,7 +429,7 @@ export default function Home() {
         }}
       >
         <div className="miniLabel">
-          COMPANY DUE DILIGENCE REPORT
+          COMPANY INTELLIGENCE BRIEF
         </div>
 
         <div
@@ -442,11 +440,13 @@ export default function Home() {
             margin: "14px 0 18px"
           }}
         >
-          US$149
+          From US$149
         </div>
 
         <p>
-          One report for one target company.
+          Introductory promotional pricing for one identifiable Mainland
+          Chinese or Hong Kong target company.
+          Scope, fee and estimated delivery date are confirmed before payment.
         </p>
 
         <div
@@ -464,14 +464,9 @@ export default function Home() {
             View Report Service →
           </Link>
 
-          <a
-            href="https://buy.stripe.com/dRm3cx62edgF14octq3Nm01"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn secondary"
-          >
-            Order Now — US$149
-          </a>
+          <Link href="/due-diligence/intake" className="btn secondary">
+            Request Scope Confirmation →
+          </Link>
         </div>
       </div>
     </div>
@@ -875,6 +870,10 @@ export default function Home() {
         </div>
 
         <div className="footerLinks">
+          <Link href="/sample-report">Sample report</Link>
+
+          <Link href="/methodology">Methodology</Link>
+
           <Link href="/responsible-ai-data">
             Responsible AI & Data
           </Link>

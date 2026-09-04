@@ -3,7 +3,8 @@ import Link from "next/link";
 export const metadata = {
   title: "Responsible AI & Data",
   description:
-    "Sericant's principles for responsible AI, lawful data sourcing, provenance and bounded company research."
+    "Sericant's principles for responsible AI, lawful data sourcing, provenance and bounded company research.",
+  alternates: { canonical: "/responsible-ai-data" }
 };
 
 export default function Page() {
@@ -39,10 +40,9 @@ export default function Page() {
             marginBottom: "52px"
           }}
         >
-          Sericant is at an early product-development stage. The principles
-          below describe the intended direction of the platform and do not
-          claim that every production control or agentic capability has already
-          been implemented.
+          These principles apply to Sericant&apos;s current research service and
+          guide the development of its future platform. Roadmap capabilities
+          are not presented as already deployed.
         </p>
 
         <section style={{ marginBottom: "44px" }}>
