@@ -276,6 +276,15 @@ p {
   background: var(--muted);
 }
 
+.compactHero {
+  min-height: 610px;
+}
+
+.compactHero h1 {
+  max-width: 1220px;
+  font-size: clamp(64px, 8vw, 120px);
+}
+
 /* -------------------------------------------------
    SHARED SECTIONS
 ------------------------------------------------- */
@@ -779,6 +788,101 @@ footer > div:last-child {
 }
 
 /* -------------------------------------------------
+   SAMPLE REPORT
+------------------------------------------------- */
+
+.reportSample {
+  background: var(--surface);
+}
+
+.sampleHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 36px;
+  align-items: start;
+  padding-bottom: 42px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.sampleHeader h2 {
+  margin-top: 18px;
+  font-size: clamp(38px, 5vw, 68px);
+}
+
+.sampleBadge {
+  border: 1px solid var(--ink);
+  padding: 10px 14px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.sampleNotice {
+  margin: 28px 0 60px;
+  padding: 18px 20px;
+  border-left: 3px solid var(--accent);
+  background: #fff;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.sampleGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  margin-bottom: 64px;
+}
+
+.sampleGrid article {
+  min-height: 280px;
+  padding: 34px 34px 34px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.sampleGrid article + article {
+  padding-left: 34px;
+  border-left: 1px solid var(--line);
+}
+
+.sampleGrid .sectionLabel {
+  margin-bottom: 28px;
+}
+
+.sampleGrid p,
+.sampleGrid li {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.mutedText {
+  color: var(--muted);
+}
+
+.sampleTable {
+  margin: -18px 0 72px;
+  border-top: 1px solid var(--ink);
+}
+
+.sampleRow {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1.35fr 0.8fr;
+  gap: 20px;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.sampleRow strong,
+.sampleRow span {
+  font-size: 13px;
+}
+
+.sampleRow small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* -------------------------------------------------
    TABLET
 ------------------------------------------------- */
 
@@ -1020,6 +1124,30 @@ footer > div:last-child {
 
   .legalContent section p {
     font-size: 14px;
+  }
+
+  .compactHero h1 {
+    font-size: clamp(50px, 15vw, 74px);
+  }
+
+  .sampleHeader {
+    flex-direction: column;
+  }
+
+  .sampleGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sampleGrid article,
+  .sampleGrid article + article {
+    min-height: 0;
+    padding: 30px 0;
+    border-left: 0;
+  }
+
+  .sampleRow {
+    grid-template-columns: 1fr;
+    gap: 5px;
   }
 }
 

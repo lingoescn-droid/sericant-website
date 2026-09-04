@@ -28,6 +28,8 @@ export default function DueDiligenceIntakePage() {
       researchPurpose: formData.get("researchPurpose"),
       specificQuestions: formData.get("specificQuestions"),
       additionalInformation: formData.get("additionalInformation"),
+      termsAccepted: formData.get("termsAccepted") === "yes",
+      faxNumber: formData.get("faxNumber"),
     };
 
     try {
@@ -140,8 +142,8 @@ export default function DueDiligenceIntakePage() {
                 maxWidth: "680px",
               }}
             >
-              Thank you. Sericant has received the information for your
-              Company Due Diligence Report.
+              Thank you. Sericant has received your company research
+              scope request.
             </p>
 
             <p
@@ -153,9 +155,9 @@ export default function DueDiligenceIntakePage() {
                 marginTop: "20px",
               }}
             >
-              Research will normally begin after the submitted company
-              information has been reviewed. If clarification is required,
-              Sericant may contact you using the email address provided.
+              We will first confirm the target entity, available scope,
+              proposed fee and estimated delivery date. No payment is due
+              until you accept that confirmation.
             </p>
 
             <Link
@@ -223,7 +225,7 @@ export default function DueDiligenceIntakePage() {
               fontSize: "14px",
             }}
           >
-            Company Due Diligence
+              Company Intelligence
           </Link>
         </header>
 
@@ -240,7 +242,7 @@ export default function DueDiligenceIntakePage() {
               marginBottom: "24px",
             }}
           >
-            COMPANY DUE DILIGENCE / INTAKE
+            COMPANY INTELLIGENCE / SCOPE REQUEST
           </div>
 
           <h1
@@ -265,8 +267,8 @@ export default function DueDiligenceIntakePage() {
               color: "#555",
             }}
           >
-            Please provide enough information to identify the target company
-            and explain what you would like Sericant to focus on.
+            Please provide enough information to identify the target company.
+            We will confirm scope, price and delivery timing before payment.
           </p>
         </section>
 
@@ -278,6 +280,12 @@ export default function DueDiligenceIntakePage() {
             paddingBottom: "100px",
           }}
         >
+          <div aria-hidden="true" style={{ position: "absolute", left: "-10000px" }}>
+            <label>
+              Fax number
+              <input name="faxNumber" tabIndex={-1} autoComplete="off" />
+            </label>
+          </div>
           <div
             style={{
               display: "grid",
@@ -436,6 +444,32 @@ export default function DueDiligenceIntakePage() {
             information through this form.
           </div>
 
+          <label
+            style={{
+              display: "flex",
+              gap: "12px",
+              alignItems: "flex-start",
+              marginTop: "24px",
+              maxWidth: "760px",
+              fontSize: "13px",
+              lineHeight: 1.6,
+              color: "#444"
+            }}
+          >
+            <input
+              type="checkbox"
+              name="termsAccepted"
+              value="yes"
+              required
+              style={{ marginTop: "4px" }}
+            />
+            <span>
+              I acknowledge the <Link href="/terms" style={{ textDecoration: "underline" }}>Service Terms</Link>{" "}
+              and <Link href="/privacy" style={{ textDecoration: "underline" }}>Privacy Policy</Link>, and confirm
+              that I am authorised to submit this business research request.
+            </span>
+          </label>
+
           {error && (
             <div
               style={{
@@ -467,7 +501,7 @@ export default function DueDiligenceIntakePage() {
           >
             {submitting
               ? "SUBMITTING..."
-              : "SUBMIT COMPANY INFORMATION →"}
+              : "REQUEST SCOPE CONFIRMATION →"}
           </button>
         </form>
 
