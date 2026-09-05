@@ -277,7 +277,7 @@ p {
 }
 
 .serviceHero {
-  min-height: calc(100vh - 76px);
+  min-height: 720px;
 }
 
 .serviceHero .eyebrow {
@@ -288,7 +288,7 @@ p {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(300px, 0.65fr);
   gap: clamp(56px, 5vw, 88px);
-  align-items: end;
+  align-items: start;
 }
 
 .serviceHero h1 {
