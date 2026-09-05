@@ -1342,3 +1342,57 @@ footer > div:last-child {
     font-size: 21px;
   }
 }
+
+/* Report-first homepage: scoped styles preserve other routes. */
+.reportFirst h2, .homeSample h2, .homeMethod h2 {
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  line-height: 1.04;
+}
+.reportFirst .miniLabel, .homeSample .sectionLabel, .homeMethod .sectionLabel {
+  font-size: .75rem;
+}
+.homeSample { background: #e9e8e1; }
+.homeSampleGrid, .homeMethodIntro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 90px);
+  align-items: center;
+}
+.sampleIntro { max-width: 470px; margin: 28px 0 16px; font-size: 1.125rem; }
+.sampleDisclaimer { max-width: 470px; font-size: .875rem; color: #55554f; margin-bottom: 28px; }
+.homeReportExcerpt { background: #fff; padding: clamp(24px, 3vw, 44px); border: 1px solid var(--line); border-top: 4px solid var(--ink); }
+.excerptTop { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+.excerptTop span { font-size: .75rem; letter-spacing: .06em; }
+.homeReportExcerpt h3 { font-size: clamp(1.35rem, 2vw, 1.8rem); line-height: 1.2; margin: 28px 0 10px; letter-spacing: -.03em; }
+.excerptSubtitle, .excerptBoundary { font-size: .875rem; color: #55554f; }
+.excerptFacts { margin: 24px 0; }
+.excerptFacts > div { display: grid; grid-template-columns: 1fr 1.5fr; gap: 16px; padding: 12px 0; border-top: 1px solid var(--line); font-size: .875rem; }
+.excerptFacts dt { font-weight: 700; }
+.excerptFacts dd { margin: 0; }
+.excerptFacts small { display: block; font-size: .75rem; color: #55554f; }
+.excerptGap { padding: 20px; background: var(--bg); }
+.excerptGap h4 { font-size: 1rem; margin: 0 0 10px; }
+.excerptGap p { font-size: .875rem; margin: 0; }
+.excerptBoundary { margin: 20px 0 0; }
+.homeMethodIntro p, .homeMethodCards p { font-size: 1rem; }
+.homeMethodCards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 44px; }
+.homeMethodCards article { border-top: 1px solid var(--line); padding-top: 24px; }
+.homeMethodCards article > span { font-size: .75rem; color: #55554f; }
+.homeMethodCards h3 { font-size: 1.25rem; margin: 12px 0; }
+.homeTechnicalDetails { margin-top: 36px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.homeTechnicalDetails summary { cursor: pointer; padding: 22px 0; font-size: 1rem; font-weight: 600; }
+.homeTechnicalDetails summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.technicalNotice { font-size: .875rem; max-width: 760px; margin: 0 0 24px; }
+.homeTechnicalDetails .section, .homeTechnicalDetails .demoSection { padding: 32px; }
+.homeTechnicalDetails h2 { font-size: clamp(2rem, 3vw, 3rem); }
+.homeTechnicalDetails #roadmap > div:last-child > div { grid-template-columns: 40px 1fr 1.5fr auto !important; gap: 16px !important; }
+@media (max-width: 900px) {
+  .homeSampleGrid, .homeMethodIntro { grid-template-columns: 1fr; }
+  .homeReportExcerpt { max-width: 640px; }
+  .homeTechnicalDetails #roadmap > div:last-child > div { grid-template-columns: 32px 1fr !important; }
+}
+@media (max-width: 600px) {
+  .homeMethodCards { grid-template-columns: 1fr; gap: 20px; }
+  .homeTechnicalDetails .section, .homeTechnicalDetails .demoSection { padding: 24px 16px; }
+  .excerptFacts > div { grid-template-columns: 1fr; gap: 6px; }
+}
