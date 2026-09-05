@@ -1396,3 +1396,21 @@ footer > div:last-child {
   .homeTechnicalDetails .section, .homeTechnicalDetails .demoSection { padding: 24px 16px; }
   .excerptFacts > div { grid-template-columns: 1fr; gap: 6px; }
 }
+
+/* Actual public PDF sample and responsive download entry points. */
+.pdfPreviewCard { margin: 0 auto; width: 100%; max-width: 450px; border: 1px solid var(--line); background: white; box-shadow: 0 16px 40px #0000000d; }
+.pdfPreviewCard > a { display: block; }
+.pdfPreviewCard img { display: block; width: 100%; height: auto; }
+.pdfPreviewCard figcaption { border-top: 1px solid var(--line); padding: 16px 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: .7rem; letter-spacing: .06em; }
+.pdfPreviewCard a:focus-visible { outline: 3px solid var(--ink); outline-offset: 5px; }
+.sampleActions { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0; }
+.realSampleIntro h1 { font-size: clamp(2.6rem, 4.4vw, 4.8rem); line-height: 1.06; letter-spacing: -.045em; }
+.realSampleIntro h1 em { font-style: normal; color: var(--muted); }
+.sampleStatus { font-size: .75rem; letter-spacing: .06em; margin-top: 16px; font-weight: 700; }
+.sampleDetails { margin: 24px 0; }
+.sampleDetails > div { display: grid; grid-template-columns: 1fr 1.4fr; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); font-size: .875rem; }
+.sampleDetails dd { margin: 0; overflow-wrap: anywhere; }
+.sampleScopeSection { background: #e9e8e1; }
+.sampleScopeSection h2 { font-size: clamp(2rem, 3.4vw, 3.5rem); line-height: 1.08; }
+@media (max-width: 900px) { .sampleScopeSection .pdfPreviewCard { order: 2; } }
+@media (max-width: 600px) { .sampleActions { flex-direction: column; } .sampleActions .btn { width: 100%; } .sampleDetails > div { grid-template-columns: 1fr; gap: 4px; } }

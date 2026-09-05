@@ -278,21 +278,14 @@ export default function Home() {
           <div>
             <h2>A closer look<br /><em>at the evidence.</em></h2>
             <p className="sampleIntro">See how a brief separates company information, source references and unanswered questions.</p>
-            <p className="sampleDisclaimer">Fictional company · Format demonstration only. This is not a completed client engagement or a live database result.</p>
-            <Link href="/sample-report" className="btn primary">View full sample report</Link>
+            <p className="sampleDisclaimer">A real-company public sample: Shenzhen UnionPay Financial Network Co., Ltd. (深圳市银联金融网络有限公司). Deregistered on 27 August 2026. Research cut-off: 5 September 2026.</p>
+            <div className="sampleActions"><Link href="/sample-report" className="btn primary">Explore the sample</Link><a href="/reports/sericant-sample-shenzhen-unionpay.pdf" download className="btn secondary">Download PDF</a></div>
+            <p className="sampleDisclaimer">15-page English PDF · Official-record review. Findings are limited to the supplied official disclosure report; this is a methodology sample, not a client testimonial.</p>
           </div>
-          <article className="homeReportExcerpt" aria-label="Fictional sample report excerpt">
-            <div className="excerptTop"><strong>SERICANT</strong><span>ILLUSTRATIVE SAMPLE</span></div>
-            <h3>Harbour Peak Technologies<br />(Shenzhen) Co., Ltd.</h3>
-            <p className="excerptSubtitle">Company Intelligence Brief · Selected excerpt</p>
-            <dl className="excerptFacts">
-              <div><dt>Jurisdiction</dt><dd>Mainland China · Shenzhen</dd></div>
-              <div><dt>Registration status</dt><dd>Active <small>Illustrative record</small></dd></div>
-              <div><dt>Source</dt><dd>Illustrative registry extract</dd></div>
-            </dl>
-            <div className="excerptGap"><h4>What remains unverified</h4><p>Beneficial ownership beyond the direct shareholders is not established. Physical operations were not independently verified.</p></div>
-            <p className="excerptBoundary">No conclusion is made about solvency, legal compliance or suitability as a counterparty.</p>
-          </article>
+          <figure className="pdfPreviewCard">
+            <Link href="/sample-report" aria-label="Preview the 15-page Sericant public sample report"><img src="/images/reports/sample-cover.webp" width="850" height="1100" loading="lazy" alt="Actual report cover for Shenzhen UnionPay Financial Network Co., Ltd., marked deregistered, issued 5 September 2026" /></Link>
+            <figcaption><span>PUBLIC SAMPLE · 15 PAGES</span><Link href="/sample-report">View report →</Link></figcaption>
+          </figure>
         </div>
       </section>
       <section className="section opportunitySection">

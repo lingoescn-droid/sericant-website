@@ -2,32 +2,45 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Sample Company Intelligence Brief",
-  description: "Preview the structure, evidence presentation and limitations of a Sericant Company Intelligence Brief.",
+  title: "Sample Company Intelligence Brief | Shenzhen UnionPay",
+  description: "Read and download Sericant’s 15-page public sample: an English official-record review of Shenzhen UnionPay Financial Network Co., Ltd., deregistered on 27 August 2026.",
   alternates: { canonical: "/sample-report" }
 };
-
-const rows = [
-  ["Legal name", "Harbour Peak Technologies (Shenzhen) Co., Ltd.", "Illustrative registry extract", "Illustrative"],
-  ["Chinese name", "海峰科技（深圳）有限公司", "Illustrative registry extract", "Illustrative"],
-  ["Jurisdiction", "Mainland China · Shenzhen", "Illustrative registry extract", "Illustrative"],
-  ["Registration status", "Active", "Illustrative registry extract", "Illustrative"],
-  ["Established", "18 March 2018", "Illustrative registry extract", "Illustrative"]
-];
+const pdf = "/reports/sericant-sample-shenzhen-unionpay.pdf";
 
 export default function SampleReportPage() {
   return (
     <main>
       <header className="topbar"><Link href="/" className="logo">SERICANT</Link><nav className="desktopNav"><Link href="/due-diligence">Report service</Link><Link href="/methodology">Methodology</Link><Link href="/responsible-ai-data">Responsible AI & Data</Link></nav><Link href="/due-diligence/intake" className="topCta">Check a company</Link></header>
-      <section className="hero compactHero"><div className="eyebrow">FORMAT SAMPLE · ILLUSTRATIVE COMPANY</div><h1>See what the<br /><em>evidence looks like.</em></h1><p className="heroText">A condensed preview of the Sericant Company Intelligence Brief. The company and records below are fictional and demonstrate format only.</p><div className="heroMeta"><span>ENGLISH OUTPUT</span><i /><span>SOURCE-TRACEABLE</span><i /><span>LIMITATIONS VISIBLE</span></div></section>
-      <section className="section reportSample"><div className="sampleHeader"><div><div className="miniLabel">SERICANT COMPANY INTELLIGENCE BRIEF</div><h2>Harbour Peak Technologies<br />(Shenzhen) Co., Ltd.</h2></div><span className="sampleBadge">ILLUSTRATIVE</span></div>
-        <div className="sampleNotice"><strong>Important:</strong> This is a fictional format sample, not a report about a real company and not evidence of live access to any named database.</div>
-        <div className="sampleGrid"><article><div className="sectionLabel">01 / EXECUTIVE SUMMARY</div><p>The supplied English trading name was matched to the illustrative Chinese legal entity above. The example record shows an active private company established in Shenzhen in 2018. The sample ownership table indicates two direct shareholders. No conclusion is made about solvency, legal compliance or suitability as a counterparty.</p></article><article><div className="sectionLabel">KEY INFORMATION GAPS</div><ul><li>Beneficial ownership beyond the direct shareholders is not established.</li><li>Financial statements were not included in this illustrative scope.</li><li>Physical operations were not independently verified.</li></ul></article></div>
-        <div className="sectionLabel">02 / ENTITY VERIFICATION</div><div className="sampleTable">{rows.map(([f,v,s,c]) => <div className="sampleRow" key={f}><strong>{f}</strong><span>{v}</span><small>{s}</small><small>{c}</small></div>)}</div>
-        <div className="sampleGrid"><article><div className="sectionLabel">03 / OWNERSHIP & MANAGEMENT</div><p><strong>Illustrative direct ownership:</strong></p><ul><li>Harbour Peak Holdings Limited — 70%</li><li>Li Ming — 30%</li></ul><p className="mutedText">Interpretation: the available example record identifies direct shareholders only. Ultimate beneficial ownership would require further evidence.</p></article><article><div className="sectionLabel">04 / PUBLIC-RECORD SIGNALS</div><p><strong>No high-severity event shown in this format sample.</strong></p><p className="mutedText">This does not mean no event exists. Production reports state the databases, date range, retrieval date and material coverage limitations actually applicable to the engagement.</p></article></div>
-        <div className="sampleGrid"><article><div className="sectionLabel">05 / SOURCE REGISTER</div><ul><li>Illustrative registry extract — retrieved 4 September 2026</li><li>Illustrative corporate filing — dated 30 June 2026</li><li>Illustrative official notice search — checked 4 September 2026</li></ul></article><article><div className="sectionLabel">06 / BOUNDARY</div><p>This brief organises information for business research. It is not a legal opinion, audit, credit rating, investment recommendation, formal KYC determination or AML certification.</p></article></div>
+      <section className="section realSampleIntro">
+        <div className="sectionLabel">PUBLIC SAMPLE / OFFICIAL-RECORD REVIEW</div>
+        <div className="homeSampleGrid">
+          <div>
+            <h1>See the research.<br /><em>Read the evidence.</em></h1>
+            <p className="sampleIntro">Shenzhen UnionPay Financial Network Co., Ltd.</p>
+            <p lang="zh-Hans">深圳市银联金融网络有限公司</p>
+            <p className="sampleStatus">DEREGISTERED · 27 AUGUST 2026</p>
+            <p className="sampleIntro">A real-company sample showing how an official Chinese disclosure report is organised into English findings, source references and explicit information gaps.</p>
+            <dl className="sampleDetails"><div><dt>Format</dt><dd>15-page English PDF · 340 KB</dd></div><div><dt>Research cut-off</dt><dd>5 September 2026</dd></div><div><dt>Reference</dt><dd>SER-SAMPLE-20260905-001</dd></div></dl>
+            <div className="sampleActions"><a href={pdf} target="_blank" rel="noopener noreferrer" className="btn primary">Read PDF ↗</a><a href={pdf} download="Sericant-Public-Sample-Shenzhen-UnionPay.pdf" className="btn secondary">Download PDF ↓</a></div>
+            <p className="sampleDisclaimer">No sign-up required. This public sample illustrates methodology; it is not a completed client engagement or an endorsement by the subject company.</p>
+          </div>
+          <figure className="pdfPreviewCard"><a href={pdf} target="_blank" rel="noopener noreferrer" aria-label="Open the sample PDF in a new tab"><img src="/images/reports/sample-cover.webp" width="850" height="1100" alt="Cover of the actual Sericant public sample PDF" fetchPriority="high" /></a><figcaption>ACTUAL PDF · COVER / PAGE 1</figcaption></figure>
+        </div>
       </section>
-      <section className="contact"><div className="sectionLabel">REQUEST A BRIEF</div><h2>Evaluate a real<br />company.</h2><Link href="/due-diligence/intake" className="contactEmail">Request scope confirmation →</Link><p>No payment until scope is confirmed.</p></section>
+      <section className="section sampleScopeSection">
+        <div className="sectionLabel">UNDERSTAND THE SCOPE</div>
+        <div className="homeSampleGrid">
+          <figure className="pdfPreviewCard"><a href={`${pdf}#page=2`} target="_blank" rel="noopener noreferrer" aria-label="Open the research scope on page 2"><img src="/images/reports/sample-scope.webp" width="850" height="1100" loading="lazy" alt="Actual PDF page 2: report control, included source, material exclusions and use limitation" /></a><figcaption>ACTUAL PDF · RESEARCH SCOPE / PAGE 2</figcaption></figure>
+          <div><h2>What this sample<br /><em>does—and does not—cover.</em></h2>
+            <p className="sampleIntro">Based solely on an Enterprise Credit Information Disclosure Report from the National Enterprise Credit Information Publicity System, generated on 5 September 2026.</p>
+            <p className="sampleIntro">Findings are limited to the fields displayed in that report. “No information displayed” does not establish that no record or issue exists.</p>
+            <p className="sampleDisclaimer">No interviews, site visit, document authentication, litigation search, adverse-media review, legal analysis, KYC determination or beneficial-ownership verification are included. This sample does not establish the scope of every paid engagement.</p>
+            <Link href="/methodology" className="textLink">Read our methodology →</Link>
+          </div>
+        </div>
+      </section>
+      <section className="contact"><div className="sectionLabel">REQUEST A BRIEF</div><h2>Research your<br />next counterparty.</h2><Link href="/due-diligence/intake" className="contactEmail">Request scope confirmation →</Link><p>Scope, fee and estimated delivery date confirmed before payment.</p></section>
     </main>
   );
 }
