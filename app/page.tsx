@@ -130,11 +130,10 @@ export default function Home() {
         </Link>
 
         <nav className="desktopNav">
-          <a href="#product">Product</a>
+          <a href="#due-diligence">Report service</a>
           <Link href="/methodology">Methodology</Link>
-          <a href="#roadmap">Roadmap</a>
+          <Link href="/sample-report">Sample report</Link>
           <a href="#about">About</a>
-          <Link href="/due-diligence">Reports</Link>
           <Link href="/responsible-ai-data">
             Responsible AI & Data
           </Link>
@@ -189,8 +188,115 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="section reportFirst" id="due-diligence">
+  <div className="sectionLabel">
+    01 / COMPANY INTELLIGENCE BRIEF
+  </div>
+
+  <div className="twoCol">
+    <div>
+      <div className="miniLabel">
+        AVAILABLE NOW
+      </div>
+
+      <h2>
+        Company intelligence,
+        <br />
+        <em>delivered as a report.</em>
+      </h2>
+    </div>
+
+    <div className="bodyCopy">
+      <p>
+        Sericant provides structured, AI-assisted company research
+        for professionals evaluating Mainland Chinese and Hong Kong
+        companies.
+      </p>
+
+      <p>
+        Each Company Intelligence Brief combines structured
+        research, source review and AI-assisted synthesis into a
+        focused professional research deliverable.
+      </p>
+
+      <div
+        style={{
+          marginTop: "32px",
+          paddingTop: "28px",
+          borderTop: "1px solid var(--line)"
+        }}
+      >
+        <div className="miniLabel">
+          COMPANY INTELLIGENCE BRIEF
+        </div>
+
+        <div
+          style={{
+            fontSize: "clamp(42px, 6vw, 72px)",
+            fontWeight: 700,
+            lineHeight: 1,
+            margin: "14px 0 18px"
+          }}
+        >
+          From US$149
+        </div>
+
+        <p>
+          Introductory promotional pricing for one identifiable Mainland
+          Chinese or Hong Kong target company.
+          Scope, fee and estimated delivery date are confirmed before payment.
+        </p>
+
+        <div
+          style={{
+            display: "flex",
+            gap: "12px",
+            flexWrap: "wrap",
+            marginTop: "28px"
+          }}
+        >
+          <Link
+            href="/due-diligence"
+            className="btn primary"
+          >
+            View Report Service →
+          </Link>
+
+          <Link href="/due-diligence/intake" className="btn secondary">
+            Request Scope Confirmation →
+          </Link>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+      <section className="section homeSample" id="sample">
+        <div className="sectionLabel">02 / SEE THE DELIVERABLE</div>
+        <div className="homeSampleGrid">
+          <div>
+            <h2>A closer look<br /><em>at the evidence.</em></h2>
+            <p className="sampleIntro">See how a brief separates company information, source references and unanswered questions.</p>
+            <p className="sampleDisclaimer">Fictional company · Format demonstration only. This is not a completed client engagement or a live database result.</p>
+            <Link href="/sample-report" className="btn primary">View full sample report</Link>
+          </div>
+          <article className="homeReportExcerpt" aria-label="Fictional sample report excerpt">
+            <div className="excerptTop"><strong>SERICANT</strong><span>ILLUSTRATIVE SAMPLE</span></div>
+            <h3>Harbour Peak Technologies<br />(Shenzhen) Co., Ltd.</h3>
+            <p className="excerptSubtitle">Company Intelligence Brief · Selected excerpt</p>
+            <dl className="excerptFacts">
+              <div><dt>Jurisdiction</dt><dd>Mainland China · Shenzhen</dd></div>
+              <div><dt>Registration status</dt><dd>Active <small>Illustrative record</small></dd></div>
+              <div><dt>Source</dt><dd>Illustrative registry extract</dd></div>
+            </dl>
+            <div className="excerptGap"><h4>What remains unverified</h4><p>Beneficial ownership beyond the direct shareholders is not established. Physical operations were not independently verified.</p></div>
+            <p className="excerptBoundary">No conclusion is made about solvency, legal compliance or suitability as a counterparty.</p>
+          </article>
+        </div>
+      </section>
       <section className="section opportunitySection">
-        <div className="sectionLabel">01 / THE OPPORTUNITY</div>
+        <div className="sectionLabel">03 / THE OPPORTUNITY</div>
 
         <div className="opportunityGrid">
           <h2>
@@ -210,9 +316,24 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="demoSection" id="demo">
+
+      <section className="section homeMethod" id="product">
+        <div className="sectionLabel">04 / RESEARCH APPROACH</div>
+        <div className="homeMethodIntro">
+          <h2>Sources first.<br /><em>Clear boundaries.</em></h2>
+          <div><p>Structured research and AI-assisted synthesis, with the scope and information limits made explicit.</p><Link href="/methodology" className="textLink">Explore our methodology →</Link></div>
+        </div>
+        <div className="homeMethodCards" id="workflow">
+          <article><span>01</span><h3>Identify the company</h3><p>Define the target entity and the questions within the agreed research scope.</p></article>
+          <article><span>02</span><h3>Review the sources</h3><p>Organise available, lawfully usable records and distinguish evidence from interpretation.</p></article>
+          <article><span>03</span><h3>Explain the limits</h3><p>Present findings alongside source references and gaps that require further investigation.</p></article>
+        </div>
+        <details className="homeTechnicalDetails">
+          <summary>Explore the illustrative prototype and product roadmap</summary>
+          <p className="technicalNotice">The prototype below uses preset fictional or illustrative content. It does not perform live research. Planned platform features are separate from the report service available now.</p>
+                <section className="demoSection" id="demo">
         <div className="sectionLabel light">
-          02 / CURRENT MVP
+          ILLUSTRATIVE DEMO
         </div>
 
         <div className="demoIntro">
@@ -252,7 +373,7 @@ export default function Home() {
           />
 
           <button onClick={runDemo}>
-            Generate research preview →
+            Run illustrative demo →
           </button>
         </div>
 
@@ -272,7 +393,7 @@ export default function Home() {
         {loadingStep !== null && (
           <div className="researchProgress">
             <div className="progressHeader">
-              <span>Researching...</span>
+              <span>Playing illustrative workflow…</span>
               <span>{progress}%</span>
             </div>
 
@@ -371,138 +492,10 @@ export default function Home() {
           </article>
         )}
       </section>
-      <section className="section" id="due-diligence">
-  <div className="sectionLabel">
-    03 / COMPANY INTELLIGENCE BRIEF
-  </div>
 
-  <div className="twoCol">
-    <div>
-      <div className="miniLabel">
-        AVAILABLE NOW
-      </div>
-
-      <h2>
-        Company intelligence,
-        <br />
-        <em>delivered as a report.</em>
-      </h2>
-    </div>
-
-    <div className="bodyCopy">
-      <p>
-        Sericant provides structured, AI-assisted company research
-        for professionals evaluating Mainland Chinese and Hong Kong
-        companies.
-      </p>
-
-      <p>
-        Each Company Intelligence Brief combines structured
-        research, source review and AI-assisted synthesis into a
-        focused professional research deliverable.
-      </p>
-
-      <div
-        style={{
-          marginTop: "32px",
-          paddingTop: "28px",
-          borderTop: "1px solid var(--line)"
-        }}
-      >
-        <div className="miniLabel">
-          COMPANY INTELLIGENCE BRIEF
-        </div>
-
-        <div
-          style={{
-            fontSize: "clamp(42px, 6vw, 72px)",
-            fontWeight: 700,
-            lineHeight: 1,
-            margin: "14px 0 18px"
-          }}
-        >
-          From US$149
-        </div>
-
-        <p>
-          Introductory promotional pricing for one identifiable Mainland
-          Chinese or Hong Kong target company.
-          Scope, fee and estimated delivery date are confirmed before payment.
-        </p>
-
-        <div
-          style={{
-            display: "flex",
-            gap: "12px",
-            flexWrap: "wrap",
-            marginTop: "28px"
-          }}
-        >
-          <Link
-            href="/due-diligence"
-            className="btn primary"
-          >
-            View Report Service →
-          </Link>
-
-          <Link href="/due-diligence/intake" className="btn secondary">
-            Request Scope Confirmation →
-          </Link>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-      <section className="section" id="product">
+                <section className="section" id="roadmap">
         <div className="sectionLabel">
-          04 / TECHNOLOGY
-        </div>
-
-        <h2>
-          Data → Structure → AI →
-          <br />
-          Intelligence
-        </h2>
-
-        <div
-          className="workflowGrid"
-          style={{ marginTop: "70px" }}
-        >
-          {[
-            [
-              "01",
-              "Data",
-              "Enterprise information from lawfully usable and appropriately authorised sources."
-            ],
-            [
-              "02",
-              "Structure",
-              "Entity resolution, normalisation and structured company information."
-            ],
-            [
-              "03",
-              "AI",
-              "AI-assisted synthesis, explanation and research workflows."
-            ],
-            [
-              "04",
-              "Intelligence",
-              "Readable, traceable and decision-oriented company intelligence."
-            ]
-          ].map(([number, title, description]) => (
-            <article key={number} className="workflowCard">
-              <span>{number}</span>
-              <h3>{title}</h3>
-              <p>{description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section" id="roadmap">
-        <div className="sectionLabel">
-          05 / ROADMAP
+          PRODUCT ROADMAP
         </div>
 
         <h2>
@@ -602,76 +595,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section" id="workflow">
-        <div className="sectionLabel">
-          06 / AGENTIC DIRECTION
-        </div>
 
-        <h2>
-          A research workflow,
-          <br />
-          not a one-shot prompt.
-        </h2>
-
-        <div className="workflowGrid">
-          {[
-            [
-              "01",
-              "Interpret",
-              "Understand the research request and define the task."
-            ],
-            [
-              "02",
-              "Retrieve",
-              "Call only approved or otherwise lawfully usable information sources."
-            ],
-            [
-              "03",
-              "Resolve",
-              "Identify the correct company entity and normalise structured fields."
-            ],
-            [
-              "04",
-              "Verify",
-              "Check required fields, timestamps and cross-source consistency."
-            ],
-            [
-              "05",
-              "Synthesize",
-              "Generate bounded AI-assisted analysis over structured inputs."
-            ],
-            [
-              "06",
-              "Provenance",
-              "Show sources, timestamps and a clear distinction between facts and AI output."
-            ]
-          ].map(([number, title, description]) => (
-            <article key={number} className="workflowCard">
-              <span>{number}</span>
-              <h3>{title}</h3>
-              <p>{description}</p>
-            </article>
-          ))}
-        </div>
-
-        <p
-          style={{
-            marginTop: "28px",
-            maxWidth: "760px",
-            fontSize: "12px",
-            lineHeight: 1.6,
-            color: "var(--muted)"
-          }}
-        >
-          These agentic capabilities represent Sericant&apos;s
-          product roadmap unless specifically identified as
-          already deployed.
-        </p>
+        </details>
       </section>
-
       <section className="section" id="about">
         <div className="sectionLabel">
-          07 / FOUNDER STORY
+          05 / FOUNDER STORY
         </div>
 
         <div className="twoCol">
@@ -715,7 +644,7 @@ export default function Home() {
 
       <section className="darkSection">
         <div className="sectionLabel light">
-          08 / RESPONSIBLE AI & DATA
+          06 / RESPONSIBLE AI & DATA
         </div>
 
         <div className="twoCol">
@@ -754,7 +683,7 @@ export default function Home() {
 
       <section className="hongkongSection">
         <div className="sectionLabel light">
-          09 / HONG KONG
+          07 / HONG KONG
         </div>
 
         <h2>
@@ -794,7 +723,7 @@ export default function Home() {
 
       <section className="section">
         <div className="sectionLabel">
-          10 / THE NAME
+          08 / THE NAME
         </div>
 
         <div className="twoCol">
@@ -824,15 +753,17 @@ export default function Home() {
 
       <section className="contact" id="contact">
         <div className="sectionLabel">
-          11 / CONTACT
+          09 / REQUEST A BRIEF
         </div>
 
         <h2>
-          Let&apos;s build the
+          Know your next
           <br />
-          intelligence layer.
+          counterparty.
         </h2>
 
+        <div className="heroActions"><Link href="/due-diligence/intake" className="btn primary">Check a company</Link><Link href="/sample-report" className="btn secondary">View sample report</Link></div>
+        <p>Scope, fee and estimated delivery date confirmed before payment.</p>
         <a
           href="mailto:hello@sericant.com"
           className="contactEmail"
