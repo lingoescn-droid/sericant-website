@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import BriefProducts, { BriefFAQ } from "./components/BriefProducts";
 import { useMemo, useState } from "react";
 
 type DemoReport = {
@@ -178,99 +179,22 @@ export default function Home() {
             </div>
 
             <div className="heroMeta">
-              <span>INTRODUCTORY PRICE FROM US$149</span>
+              <span>QUICK SCAN US$49 · FULL BRIEF FROM US$149</span>
               <i />
               <span>SCOPE CONFIRMED FIRST</span>
               <i />
-              <span>2–3 BUSINESS DAYS</span>
+              <span>1 OR 2–3 BUSINESS DAYS BY PRODUCT</span>
             </div>
           </div>
         </div>
       </section>
 
       <section className="section reportFirst" id="due-diligence">
-  <div className="sectionLabel">
-    01 / COMPANY INTELLIGENCE BRIEF
-  </div>
-
-  <div className="twoCol">
-    <div>
-      <div className="miniLabel">
-        AVAILABLE NOW
-      </div>
-
-      <h2>
-        Company intelligence,
-        <br />
-        <em>delivered as a report.</em>
-      </h2>
-    </div>
-
-    <div className="bodyCopy">
-      <p>
-        Sericant provides structured, AI-assisted company research
-        for professionals evaluating Mainland Chinese and Hong Kong
-        companies.
-      </p>
-
-      <p>
-        Each Company Intelligence Brief combines structured
-        research, source review and AI-assisted synthesis into a
-        focused professional research deliverable.
-      </p>
-
-      <div
-        style={{
-          marginTop: "32px",
-          paddingTop: "28px",
-          borderTop: "1px solid var(--line)"
-        }}
-      >
-        <div className="miniLabel">
-          COMPANY INTELLIGENCE BRIEF
-        </div>
-
-        <div
-          style={{
-            fontSize: "clamp(42px, 6vw, 72px)",
-            fontWeight: 700,
-            lineHeight: 1,
-            margin: "14px 0 18px"
-          }}
-        >
-          From US$149
-        </div>
-
-        <p>
-          Introductory promotional pricing for one identifiable Mainland
-          Chinese or Hong Kong target company.
-          Scope, fee and estimated delivery date are confirmed before payment.
-        </p>
-
-        <div
-          style={{
-            display: "flex",
-            gap: "12px",
-            flexWrap: "wrap",
-            marginTop: "28px"
-          }}
-        >
-          <Link
-            href="/due-diligence"
-            className="btn primary"
-          >
-            View Report Service →
-          </Link>
-
-          <Link href="/due-diligence/intake" className="btn secondary">
-            Request Scope Confirmation →
-          </Link>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+        <div className="sectionLabel">01 / CHOOSE YOUR BRIEF</div>
+        <h2>Start with a scan.<br /><em>Go deeper when you need to.</em></h2>
+        <BriefProducts />
+        <h3 className="briefFAQTitle">Before you choose</h3><BriefFAQ />
+      </section>
 
       <section className="section homeSample" id="sample">
         <div className="sectionLabel">02 / SEE THE DELIVERABLE</div>

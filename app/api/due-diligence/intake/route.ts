@@ -1,9 +1,11 @@
 import crypto from "crypto";
+import { briefProducts, isBriefProduct } from "../../../lib/brief-products";
 import { NextRequest, NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 
 type IntakePayload = {
+  product?: unknown;
   customerName?: unknown;
   email?: unknown;
   companyLegalName?: unknown;
@@ -47,6 +49,12 @@ function createRequestId() {
 export async function POST(request: NextRequest) {
   try {
     const body = (await request.json()) as IntakePayload;
+    // Older cached forms without a product retain the original full-brief scope.
+    const productKey = body.product === undefined ? "standard" : body.product;
+    if (!isBriefProduct(productKey)) {
+      return NextResponse.json({ ok: false, error: "Invalid report product." }, { status: 400 });
+    }
+    const product = briefProducts[productKey];
     const customerName = clean(body.customerName, 150);
     const email = clean(body.email, 254);
     const companyLegalName = clean(body.companyLegalName, 300);
@@ -116,6 +124,9 @@ export async function POST(request: NextRequest) {
         <p><strong>Registration number:</strong> ${value(registrationNumber)}</p>
         <p><strong>Website:</strong> ${value(website)}</p>
         <h2>Research request</h2>
+        <p><strong>Product:</strong> ${value(product.name)}</p>
+        <p><strong>Indicative price:</strong> ${value(product.price)}</p>
+        <p><strong>Delivery estimate:</strong> ${value(product.timing)} after payment and sufficient identifying information; subject to scope confirmation.</p>
         <p><strong>Purpose:</strong> ${value(researchPurpose)}</p>
         <p><strong>Specific questions:</strong><br />${value(specificQuestions).replaceAll("\n", "<br />")}</p>
         <p><strong>Additional information:</strong><br />${value(additionalInformation).replaceAll("\n", "<br />")}</p>
@@ -132,7 +143,7 @@ export async function POST(request: NextRequest) {
         from: fromEmail,
         to: [notificationEmail],
         reply_to: email,
-        subject: `${requestId} — Scope Request — ${companyLegalName}`,
+        subject: `${requestId} — ${product.name} — ${companyLegalName}`,
         html: internalHtml
       })
     });
@@ -150,6 +161,8 @@ export async function POST(request: NextRequest) {
         <h1>Sericant scope request received</h1>
         <p>Dear ${value(customerName)},</p>
         <p>We have received your request concerning <strong>${value(companyLegalName)}</strong>.</p>
+        <p><strong>Requested product:</strong> ${value(product.name)} — ${value(product.price)}</p>
+        <p><strong>Delivery estimate:</strong> ${value(product.timing)} after payment and sufficient identifying information; subject to scope confirmation.</p>
         <p><strong>Reference:</strong> ${value(requestId)}</p>
         <p>We will first confirm the target entity, available research scope, fee and estimated delivery date. No payment is due until you accept that confirmation.</p>
         <p>Regards,<br />Sericant Limited<br />Hong Kong</p>

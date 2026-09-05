@@ -9,7 +9,7 @@ Confirm:
 - the customer has provided a legitimate business-research purpose;
 - the requested work can be performed using authorised or otherwise lawfully usable sources;
 - the request does not require a legal opinion, credit rating, audit, formal KYC determination or prohibited investigation;
-- the standard brief is sufficient, or a custom quotation is needed.
+- the selected Quick Scan or full brief matches the requested scope, or a custom quotation is needed.
 
 ## 2. Send scope confirmation
 
@@ -26,6 +26,10 @@ Include:
 - link to Service Terms, Privacy Policy and Delivery and Cancellation Policy;
 - approved Stripe payment link.
 
+Quick Scan Brief costs US$49 for three sections: entity identification, registration status, and information gaps / follow-up checks. Its delivery estimate is one business day after payment and sufficient identifying information. It excludes ownership tracing, management background, litigation and adverse-media research. Confirm feasibility before accepting payment.
+
+The full Company Intelligence Brief starts at US$149 with an estimated 2–3 business days after payment and sufficient information. An upgrade requires a new scope and fee confirmation; do not promise an automatic US$49 credit.
+
 The public US$149 starting price is introductory promotional pricing. Do not
 describe it as a permanent tariff. The price confirmed for an accepted request
 remains effective for that engagement.
@@ -35,6 +39,11 @@ Suggested wording:
 > We have matched your request to [legal name / identifier]. We can prepare a Sericant Company Intelligence Brief covering [scope] for [fee]. The estimated delivery date is [date], subject to receipt of payment and sufficient identifying information. The brief is informational research and is not a legal opinion, audit, credit rating, investment recommendation or formal KYC/AML determination.
 
 ## 3. Stripe product description
+
+Create the invoice manually after scope acceptance, using the selected product and confirmed fee. Website changes do not create Stripe products or charge customers. For Quick Scan use:
+
+> Quick Scan Brief for one confirmed Mainland Chinese or Hong Kong company: entity identification, registration status, and information gaps / follow-up checks. Informational research only. Scope and delivery date are stated in the confirmation email.
+
 
 Use wording consistent with the website:
 

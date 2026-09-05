@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BriefProducts, { BriefFAQ } from "../components/BriefProducts";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -64,11 +65,11 @@ export default function DueDiligencePage() {
             </div>
 
             <div className="heroMeta">
-              <span>INTRODUCTORY PRICE FROM US$149</span>
+              <span>QUICK SCAN US$49 · FULL BRIEF FROM US$149</span>
               <i />
               <span>SCOPE CONFIRMED FIRST</span>
               <i />
-              <span>2–3 BUSINESS DAYS</span>
+              <span>1 OR 2–3 BUSINESS DAYS BY PRODUCT</span>
             </div>
           </div>
         </div>
@@ -106,7 +107,7 @@ export default function DueDiligencePage() {
 
       <section className="section" id="product">
         <div className="sectionLabel">
-          02 / STANDARD SCOPE
+          02 / FULL BRIEF SCOPE
         </div>
 
         <div className="workflowGrid">
@@ -227,56 +228,10 @@ export default function DueDiligencePage() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="sectionLabel">
-          05 / PRICE
-        </div>
-
-        <div
-          style={{
-            borderTop: "1px solid var(--line)",
-            borderBottom: "1px solid var(--line)",
-            padding: "42px 0",
-            display: "grid",
-            gridTemplateColumns: "1fr auto",
-            gap: "40px",
-            alignItems: "center"
-          }}
-        >
-          <div>
-            <div className="miniLabel">
-              COMPANY INTELLIGENCE BRIEF
-            </div>
-
-            <h2
-              style={{
-                marginTop: "14px",
-                fontSize: "clamp(36px, 5vw, 64px)"
-              }}
-            >
-              From US$149
-            </h2>
-
-            <p
-              style={{
-                maxWidth: "640px",
-                marginTop: "16px",
-                color: "var(--muted)",
-                lineHeight: 1.7
-              }}
-            >
-              During the introductory promotional period, the standard brief
-              starts from US$149 and covers one identifiable Mainland Chinese or
-              Hong Kong company. Final scope, fee and estimated delivery date
-              are confirmed before payment. Complex ownership, multiple
-              entities or specialist research may require a separate quotation.
-            </p>
-          </div>
-
-          <Link href="/due-diligence/intake" className="btn primary">
-            Request scope confirmation →
-          </Link>
-        </div>
+      <section className="section" id="pricing">
+        <div className="sectionLabel">05 / CHOOSE YOUR BRIEF</div>
+        <BriefProducts />
+        <h3 className="briefFAQTitle">Product questions</h3><BriefFAQ />
       </section>
 
       <section className="section">
@@ -286,8 +241,8 @@ export default function DueDiligencePage() {
             <h2>Clear scope.<br /><em>No surprise charge.</em></h2>
           </div>
           <div className="bodyCopy">
-            <p>Submitting a request does not create a payment obligation. Sericant first checks whether the target entity can be identified and whether the requested work fits the standard brief.</p>
-            <p>Standard delivery is normally estimated at 2–3 business days after payment and receipt of sufficient identifying information. The confirmed proposal controls if a different timeframe is stated.</p>
+            <p>Submitting a request does not create a payment obligation. Sericant first checks whether the target entity can be identified and which brief fits the requested work.</p>
+            <p>Quick Scan delivery is normally estimated at 1 business day; the fuller brief at 2–3 business days after payment and receipt of sufficient identifying information. The confirmed proposal controls if a different timeframe is stated.</p>
             <p><Link href="/refund-delivery" className="textLink">Read delivery and cancellation policy →</Link></p>
           </div>
         </div>

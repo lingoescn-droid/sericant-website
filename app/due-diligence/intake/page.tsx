@@ -1,9 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
+
+import { briefProducts, isBriefProduct, type BriefProduct } from "../../lib/brief-products";
 
 export default function DueDiligenceIntakePage() {
+  const [product, setProduct] = useState<BriefProduct>("standard");
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get("product");
+    if (isBriefProduct(requested)) setProduct(requested);
+  }, []);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
@@ -18,6 +25,7 @@ export default function DueDiligenceIntakePage() {
     const formData = new FormData(form);
 
     const payload = {
+      product,
       customerName: formData.get("customerName"),
       email: formData.get("email"),
       companyLegalName: formData.get("companyLegalName"),
@@ -143,7 +151,7 @@ export default function DueDiligenceIntakePage() {
               }}
             >
               Thank you. Sericant has received your company research
-              scope request.
+              scope request for {briefProducts[product].name}.
             </p>
 
             <p
@@ -290,10 +298,17 @@ export default function DueDiligenceIntakePage() {
             style={{
               display: "grid",
               gridTemplateColumns:
-                "repeat(auto-fit, minmax(280px, 1fr))",
+                "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
               gap: "32px",
             }}
           >
+            <Field label="Report product *">
+              <select name="product" value={product} onChange={event => { if (isBriefProduct(event.target.value)) setProduct(event.target.value); }} required style={inputStyle} aria-describedby="product-description">
+                <option value="quick">Quick Scan Brief — US$49</option>
+                <option value="standard">Company Intelligence Brief — From US$149</option>
+              </select>
+              <span id="product-description" style={{fontSize: "14px", lineHeight: 1.6}}>{briefProducts[product].summary} Estimated delivery: {briefProducts[product].timing} after payment and sufficient identifying information. {product === "quick" ? "Three sections: entity identification, registration status, and information gaps. Excludes ownership tracing, litigation and adverse-media searches, financial review and legal analysis." : "Final scope and price confirmed before payment."}</span>
+            </Field>
             <Field label="Customer name *">
               <input
                 name="customerName"
