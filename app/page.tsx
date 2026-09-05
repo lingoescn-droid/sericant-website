@@ -203,9 +203,9 @@ export default function Home() {
           <div>
             <h2>A closer look<br /><em>at the evidence.</em></h2>
             <p className="sampleIntro">See how a brief separates company information, source references and unanswered questions.</p>
-            <p className="sampleDisclaimer">Watermarked public-records research sample based on a Chinese enterprise-credit disclosure report. Target identifier: 91440300279257697T · Chinese legal name: 深圳市银联金融网络有限公司.</p>
-            <div className="sampleActions"><Link href="/sample-report" className="btn primary">Explore the sample</Link><a href="/reports/sericant-sample-shenzhen-unionpay.pdf" download className="btn secondary">Download PDF</a></div>
-            <p className="sampleDisclaimer">15-page English PDF · Official-record review. The report lists a deregistered status and separately an approval date of 27 August 2026; it does not establish a precise deregistration date. This is an independent methodology sample, not a client testimonial or endorsement.</p>
+            <p className="sampleDisclaimer">Watermarked public-records research sample based on a Chinese enterprise-credit disclosure report. Target identifier: 911101056738046445 · Chinese legal name: 沃特杰特贸易（北京）有限公司.</p>
+            <div className="sampleActions"><Link href="/sample-report" className="btn primary">Explore the sample</Link><a href="/reports/sericant-sample-waterjet-beijing.pdf" download className="btn secondary">Download PDF</a></div>
+            <p className="sampleDisclaimer">15-page English PDF · Official-record review. The report lists a deregistered status and separately an approval date of 2 February 2026; it does not establish a precise deregistration date. This is an independent methodology sample, not a client testimonial or endorsement.</p>
           </div>
           <figure className="pdfPreviewCard">
             <Link href="/sample-report" aria-label="Preview the 15-page Sericant public sample report"><img src="/images/reports/sample-cover.webp" width="850" height="1100" loading="lazy" alt="Cover of Sericant’s watermarked public-records research sample" /></Link>
