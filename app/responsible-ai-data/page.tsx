@@ -1,3 +1,4 @@
+import SericantLogo from "../components/SericantLogo";
 import Link from "next/link";
 
 export const metadata = {
@@ -12,7 +13,7 @@ export default function Page() {
     <main className="legalPage">
       <header className="simpleHeader">
         <Link href="/" className="logo">
-          SERICANT
+          <SericantLogo />
         </Link>
 
         <Link href="/" className="back">

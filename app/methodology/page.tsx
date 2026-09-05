@@ -1,3 +1,4 @@
+import SericantLogo from "../components/SericantLogo";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -21,7 +22,7 @@ const steps = [
 export default function MethodologyPage() {
   return (
     <main>
-      <header className="topbar"><Link href="/" className="logo">SERICANT</Link><nav className="desktopNav"><Link href="/due-diligence">Report service</Link><Link href="/sample-report">Sample report</Link><Link href="/responsible-ai-data">Responsible AI & Data</Link></nav><Link href="/due-diligence/intake" className="topCta">Check a company</Link></header>
+      <header className="topbar"><Link href="/" className="logo"><SericantLogo /></Link><nav className="desktopNav"><Link href="/due-diligence">Report service</Link><Link href="/sample-report">Sample report</Link><Link href="/responsible-ai-data">Responsible AI & Data</Link></nav><Link href="/due-diligence/intake" className="topCta">Check a company</Link></header>
       <section className="hero compactHero"><div className="eyebrow">RESEARCH METHODOLOGY</div><h1>Evidence first.<br /><em>Interpretation second.</em></h1><p className="heroText">A bounded company-research workflow designed for traceability, uncertainty and professional review.</p></section>
       <section className="section" id="workflow"><div className="sectionLabel">HOW A BRIEF IS PREPARED</div><div className="workflowGrid">{steps.map(([n,t,d]) => <article className="workflowCard" key={n}><span>{n}</span><h3>{t}</h3><p>{d}</p></article>)}</div></section>
       <section className="darkSection"><div className="sectionLabel light">OUTPUT BOUNDARIES</div><div className="twoCol"><h2>Useful research.<br /><em>Not a professional determination.</em></h2><div className="bodyCopy lightCopy"><p>Sericant identifies source-supported facts, observable signals, inconsistencies and information gaps. It does not declare that a target is legally compliant, creditworthy, safe, investment-grade or approved for KYC.</p><p>The customer and its qualified advisers remain responsible for consequential decisions.</p><Link href="/responsible-ai-data" className="textLink">Responsible AI & Data →</Link></div></div></section>

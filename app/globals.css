@@ -1396,3 +1396,46 @@ footer > div:last-child {
   .homeTechnicalDetails .section, .homeTechnicalDetails .demoSection { padding: 24px 16px; }
   .excerptFacts > div { grid-template-columns: 1fr; gap: 6px; }
 }
+
+/* Actual public PDF sample and responsive download entry points. */
+.pdfPreviewCard { margin: 0 auto; width: 100%; max-width: 450px; border: 1px solid var(--line); background: white; box-shadow: 0 16px 40px #0000000d; }
+.pdfPreviewCard > a { display: block; }
+.pdfPreviewCard img { display: block; width: 100%; height: auto; }
+.pdfPreviewCard figcaption { border-top: 1px solid var(--line); padding: 16px 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: .7rem; letter-spacing: .06em; }
+.pdfPreviewCard a:focus-visible { outline: 3px solid var(--ink); outline-offset: 5px; }
+.sampleActions { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0; }
+.realSampleIntro h1 { font-size: clamp(2.6rem, 4.4vw, 4.8rem); line-height: 1.06; letter-spacing: -.045em; }
+.realSampleIntro h1 em { font-style: normal; color: var(--muted); }
+.sampleStatus { font-size: .75rem; letter-spacing: .06em; margin-top: 16px; font-weight: 700; }
+.sampleDetails { margin: 24px 0; }
+.sampleDetails > div { display: grid; grid-template-columns: 1fr 1.4fr; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); font-size: .875rem; }
+.sampleDetails dd { margin: 0; overflow-wrap: anywhere; }
+.sampleScopeSection { background: #e9e8e1; }
+.sampleScopeSection h2 { font-size: clamp(2rem, 3.4vw, 3.5rem); line-height: 1.08; }
+@media (max-width: 900px) { .sampleScopeSection .pdfPreviewCard { order: 2; } }
+@media (max-width: 600px) { .sampleActions { flex-direction: column; } .sampleActions .btn { width: 100%; } .sampleDetails > div { grid-template-columns: 1fr; gap: 4px; } }
+
+/* Shared product selection and scope comparison. */
+.briefProducts { margin-top: 36px; }
+.briefProductGrid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+.briefProductCard { display: flex; flex-direction: column; border: 1px solid var(--line); padding: clamp(24px,3vw,40px); }
+.briefProductFull { background: #e9e8e1; border-top: 3px solid var(--ink); }
+.briefProductCard h3 { font-size: clamp(1.35rem,2.2vw,2rem); line-height: 1.15; margin: 18px 0; }
+.briefProductCard .briefPrice { font-size: clamp(2.4rem,4vw,3.8rem); font-weight: 700; letter-spacing: -.04em; line-height: 1.1; margin: 0 0 18px; }
+.briefProductCard p, .briefProductCard li { font-size: 1rem; line-height: 1.6; }
+.briefProductCard .briefTiming { font-size: .85rem; font-weight: 600; margin-bottom: 20px; }
+.briefProductCard ul { padding-left: 20px; margin: 20px 0; }
+.briefProductCard .briefProductNote { font-size: .85rem; color: #55554f; margin-bottom: 24px; }
+.briefProductCard .btn { margin-top: auto; align-self: flex-start; }
+.briefSharedNote { font-size: .85rem; line-height: 1.7; color: #55554f; max-width: 850px; margin-top: 24px; }
+.briefFAQTitle { font-size: 1.5rem; margin: 48px 0 24px; }
+.briefFAQ details { border-top: 1px solid var(--line); }
+.briefFAQ details:last-child { border-bottom: 1px solid var(--line); }
+.briefFAQ summary { cursor: pointer; padding: 20px 0; font-weight: 600; font-size: 1rem; }
+.briefFAQ summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.briefFAQ p { max-width: 850px; font-size: 1rem; line-height: 1.7; padding-bottom: 24px; }
+.briefFAQ a { text-decoration: underline; }
+@media(max-width:700px) { .briefProductGrid { grid-template-columns: 1fr; } .briefProductCard .btn { width:100%; } }
+
+/* SVG wordmark scales with its existing navigation/footer type size. */
+.sericantWordmark { display: inline-block; width: 5.1em; height: 1.182em; vertical-align: -.12em; flex-shrink: 0; }
