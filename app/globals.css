@@ -276,6 +276,59 @@ p {
   background: var(--muted);
 }
 
+.serviceHero {
+  min-height: calc(100vh - 76px);
+}
+
+.serviceHero .eyebrow {
+  margin-bottom: 48px;
+}
+
+.serviceHeroLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(300px, 0.65fr);
+  gap: clamp(56px, 5vw, 88px);
+  align-items: end;
+}
+
+.serviceHero h1 {
+  max-width: none;
+  margin: 0;
+  font-size: clamp(68px, 6.2vw, 100px);
+  line-height: 0.88;
+}
+
+.serviceHero h1 span {
+  display: block;
+}
+
+.serviceHero h1 span:last-child {
+  color: #85857e;
+}
+
+.serviceHeroAside {
+  padding-bottom: 5px;
+}
+
+.serviceHeroStatement {
+  max-width: 460px;
+  margin-bottom: 24px;
+  font-size: clamp(34px, 3.2vw, 54px);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 0.96;
+  color: #85857e;
+}
+
+.serviceHero .heroText {
+  max-width: 510px;
+  font-size: clamp(16px, 1.3vw, 20px);
+}
+
+.serviceHero .heroMeta {
+  margin-top: 42px;
+}
+
 .compactHero {
   min-height: 610px;
 }
@@ -903,6 +956,15 @@ footer > div:last-child {
     min-height: 650px;
   }
 
+  .serviceHeroLayout {
+    grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
+    gap: 44px;
+  }
+
+  .serviceHero h1 {
+    font-size: clamp(52px, 5.4vw, 64px);
+  }
+
   #product .workflowGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -957,6 +1019,25 @@ footer > div:last-child {
     min-height: auto;
     padding-top: 74px;
     padding-bottom: 78px;
+  }
+
+  .serviceHero .eyebrow {
+    margin-bottom: 30px;
+  }
+
+  .serviceHeroLayout {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .serviceHero h1 {
+    font-size: clamp(50px, 14.5vw, 74px);
+    line-height: 0.9;
+  }
+
+  .serviceHeroStatement {
+    margin-bottom: 20px;
+    font-size: 34px;
   }
 
   .eyebrow {
