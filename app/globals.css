@@ -1436,3 +1436,6 @@ footer > div:last-child {
 .briefFAQ p { max-width: 850px; font-size: 1rem; line-height: 1.7; padding-bottom: 24px; }
 .briefFAQ a { text-decoration: underline; }
 @media(max-width:700px) { .briefProductGrid { grid-template-columns: 1fr; } .briefProductCard .btn { width:100%; } }
+
+/* SVG wordmark scales with its existing navigation/footer type size. */
+.sericantWordmark { display: inline-block; width: 5.1em; height: 1.182em; vertical-align: -.12em; flex-shrink: 0; }

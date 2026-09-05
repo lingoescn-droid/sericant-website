@@ -1,3 +1,4 @@
+import SericantLogo from "../components/SericantLogo";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -11,7 +12,7 @@ const pdf = "/reports/sericant-sample-shenzhen-unionpay.pdf";
 export default function SampleReportPage() {
   return (
     <main>
-      <header className="topbar"><Link href="/" className="logo">SERICANT</Link><nav className="desktopNav"><Link href="/due-diligence">Report service</Link><Link href="/methodology">Methodology</Link><Link href="/responsible-ai-data">Responsible AI & Data</Link></nav><Link href="/due-diligence/intake" className="topCta">Check a company</Link></header>
+      <header className="topbar"><Link href="/" className="logo"><SericantLogo /></Link><nav className="desktopNav"><Link href="/due-diligence">Report service</Link><Link href="/methodology">Methodology</Link><Link href="/responsible-ai-data">Responsible AI & Data</Link></nav><Link href="/due-diligence/intake" className="topCta">Check a company</Link></header>
       <section className="section realSampleIntro">
         <div className="sectionLabel">PUBLIC SAMPLE / OFFICIAL-RECORD REVIEW</div>
         <div className="homeSampleGrid">

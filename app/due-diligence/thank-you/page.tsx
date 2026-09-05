@@ -1,3 +1,4 @@
+import SericantLogo from "../../components/SericantLogo";
 import Link from "next/link";
 
 export default function DueDiligenceThankYouPage() {
@@ -34,7 +35,7 @@ export default function DueDiligenceThankYouPage() {
               letterSpacing: "0.08em",
             }}
           >
-            SERICANT
+            <SericantLogo />
           </Link>
 
           <Link

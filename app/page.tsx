@@ -1,5 +1,6 @@
 "use client";
 
+import SericantLogo from "./components/SericantLogo";
 import Link from "next/link";
 import BriefProducts, { BriefFAQ } from "./components/BriefProducts";
 import { useMemo, useState } from "react";
@@ -127,7 +128,7 @@ export default function Home() {
     <main>
       <header className="topbar">
         <Link href="/" className="logo">
-          SERICANT
+          <SericantLogo />
         </Link>
 
         <nav className="desktopNav">
@@ -695,7 +696,7 @@ export default function Home() {
 
       <footer>
         <div className="footerBrand">
-          SERICANT
+          <SericantLogo />
         </div>
 
         <div className="footerLinks">

@@ -1,3 +1,4 @@
+import SericantLogo from "../components/SericantLogo";
 import Link from "next/link";
 import BriefProducts, { BriefFAQ } from "../components/BriefProducts";
 import type { Metadata } from "next";
@@ -14,7 +15,7 @@ export default function DueDiligencePage() {
     <main>
       <header className="topbar">
         <Link href="/" className="logo">
-          SERICANT
+          <SericantLogo />
         </Link>
 
         <nav className="desktopNav">
@@ -271,7 +272,7 @@ export default function DueDiligencePage() {
 
       <footer>
         <div className="footerBrand">
-          SERICANT
+          <SericantLogo />
         </div>
 
         <div className="footerLinks">

@@ -1,5 +1,6 @@
 "use client";
 
+import SericantLogo from "../../components/SericantLogo";
 import Link from "next/link";
 import { FormEvent, useEffect, useState } from "react";
 
@@ -98,7 +99,7 @@ export default function DueDiligenceIntakePage() {
                 letterSpacing: "0.08em",
               }}
             >
-              SERICANT
+              <SericantLogo />
             </Link>
 
             <Link
@@ -222,7 +223,7 @@ export default function DueDiligenceIntakePage() {
               letterSpacing: "0.08em",
             }}
           >
-            SERICANT
+            <SericantLogo />
           </Link>
 
           <Link

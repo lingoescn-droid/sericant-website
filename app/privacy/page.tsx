@@ -1,3 +1,4 @@
+import SericantLogo from "../components/SericantLogo";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -24,7 +25,7 @@ const sections = [
 export default function PrivacyPage() {
   return (
     <main className="legalPage">
-      <header className="simpleHeader"><Link href="/" className="logo">SERICANT</Link><Link href="/" className="back">← Back to home</Link></header>
+      <header className="simpleHeader"><Link href="/" className="logo"><SericantLogo /></Link><Link href="/" className="back">← Back to home</Link></header>
       <article className="legalContent">
         <div className="sectionLabel">PRIVACY POLICY</div>
         <h1 style={{ fontSize: "48px", lineHeight: 1.05, letterSpacing: "-0.04em", marginBottom: "18px" }}>Privacy Policy</h1>

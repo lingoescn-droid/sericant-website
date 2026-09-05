@@ -1,3 +1,4 @@
+import SericantLogo from "../components/SericantLogo";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 export default function RefundDeliveryPage() {
   return (
     <main className="legalPage">
-      <header className="simpleHeader"><Link href="/" className="logo">SERICANT</Link><Link href="/due-diligence" className="back">← Back to report service</Link></header>
+      <header className="simpleHeader"><Link href="/" className="logo"><SericantLogo /></Link><Link href="/due-diligence" className="back">← Back to report service</Link></header>
       <article className="legalContent">
         <div className="sectionLabel">DELIVERY & CANCELLATION</div>
         <h1 style={{ fontSize: "48px", lineHeight: 1.05, letterSpacing: "-0.04em", marginBottom: "18px" }}>Delivery and Cancellation Policy</h1>
