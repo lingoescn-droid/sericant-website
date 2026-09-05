@@ -30,41 +30,47 @@ export default function DueDiligencePage() {
         </Link>
       </header>
 
-      <section className="hero">
+      <section className="hero serviceHero">
         <div className="eyebrow">
           COMPANY INTELLIGENCE BRIEF
         </div>
 
-        <h1>
-          Know who you are
-          <br />
-          doing business with.
-          <br />
-          <em>See the evidence clearly.</em>
-        </h1>
+        <div className="serviceHeroLayout">
+          <h1>
+            <span>Know who you’re</span>
+            <span>doing business with</span>
+            <span>in China.</span>
+          </h1>
 
-        <p className="heroText">
-          Source-based company intelligence for professionals evaluating
-          Mainland Chinese and Hong Kong counterparties, delivered in clear
-          English with traceable evidence.
-        </p>
+          <div className="serviceHeroAside">
+            <p className="serviceHeroStatement">
+              See the evidence clearly.
+            </p>
 
-        <div className="heroActions">
-          <Link href="/due-diligence/intake" className="btn primary">
-            Check a company
-          </Link>
+            <p className="heroText">
+              Source-based company intelligence for professionals evaluating
+              Mainland Chinese and Hong Kong counterparties, delivered in clear
+              English with traceable evidence.
+            </p>
 
-          <Link href="/sample-report" className="btn secondary">
-            View sample report
-          </Link>
-        </div>
+            <div className="heroActions">
+              <Link href="/due-diligence/intake" className="btn primary">
+                Check a company
+              </Link>
 
-        <div className="heroMeta">
-          <span>INTRODUCTORY PRICE FROM US$149</span>
-          <i />
-          <span>SCOPE CONFIRMED FIRST</span>
-          <i />
-          <span>2–3 BUSINESS DAYS</span>
+              <Link href="/sample-report" className="btn secondary">
+                View sample report
+              </Link>
+            </div>
+
+            <div className="heroMeta">
+              <span>INTRODUCTORY PRICE FROM US$149</span>
+              <i />
+              <span>SCOPE CONFIRMED FIRST</span>
+              <i />
+              <span>2–3 BUSINESS DAYS</span>
+            </div>
+          </div>
         </div>
       </section>
 

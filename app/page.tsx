@@ -145,86 +145,67 @@ export default function Home() {
         </Link>
       </header>
 
-      <section className="hero">
+      <section className="hero serviceHero">
         <div className="eyebrow">
           MAINLAND CHINA & HONG KONG COMPANY INTELLIGENCE
         </div>
 
-        <h1>
-          Know who you&apos;re
-          <br />
-          doing business with
-          <br />
-          <em>in China.</em>
-        </h1>
+        <div className="serviceHeroLayout">
+          <h1>
+            <span>Know who you&apos;re</span>
+            <span>doing business with</span>
+            <span>in China.</span>
+          </h1>
 
-        <p className="heroText">
-          Source-based company intelligence for professionals evaluating
-          Mainland Chinese and Hong Kong counterparties.
-        </p>
+          <div className="serviceHeroAside">
+            <p className="serviceHeroStatement">
+              See the evidence clearly.
+            </p>
 
-        <p
-          style={{
-            maxWidth: "720px",
-            fontSize: "15px",
-            lineHeight: 1.7,
-            marginTop: "-8px",
-            marginBottom: "28px"
-          }}
-        >
-          Clear English research covering company identity, ownership,
-          management, business activity and relevant public-record signals —
-          with sources and limitations made visible.
-        </p>
+            <p className="heroText">
+              Source-based company intelligence for professionals evaluating
+              Mainland Chinese and Hong Kong counterparties. Clear English
+              research with sources and limitations made visible.
+            </p>
 
-<div className="heroActions">
-  <Link href="/due-diligence/intake" className="btn primary">
-    Check a company
-  </Link>
+            <div className="heroActions">
+              <Link href="/due-diligence/intake" className="btn primary">
+                Check a company
+              </Link>
 
-  <Link href="/sample-report" className="btn secondary">
-    View sample report
-  </Link>
+              <Link href="/sample-report" className="btn secondary">
+                View sample report
+              </Link>
+            </div>
 
-  <a href="#about" className="btn secondary">
-    About Sericant
-  </a>
-</div>
-
-        <div className="heroMeta">
-          <span>INTRODUCTORY PRICE FROM US$149</span>
-          <i />
-          <span>SCOPE CONFIRMED FIRST</span>
-          <i />
-          <span>INFORMATIONAL RESEARCH</span>
+            <div className="heroMeta">
+              <span>INTRODUCTORY PRICE FROM US$149</span>
+              <i />
+              <span>SCOPE CONFIRMED FIRST</span>
+              <i />
+              <span>2–3 BUSINESS DAYS</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="section">
+      <section className="section opportunitySection">
         <div className="sectionLabel">01 / THE OPPORTUNITY</div>
 
-        <div className="twoCol">
-          <div />
+        <div className="opportunityGrid">
+          <h2>
+            Enterprise information is abundant.
+            <br />
+            <em>Understanding it shouldn&apos;t be difficult.</em>
+          </h2>
 
-          <div>
-            <h2
-              style={{
-                fontSize: "clamp(42px, 5vw, 72px)"
-              }}
-            >
-              Enterprise information is abundant.
-              <br />
-              Understanding it shouldn&apos;t be difficult.
-            </h2>
-
-            <div className="bodyCopy" style={{ marginTop: "34px" }}>
-              <p>
-                China has one of the world&apos;s largest and most active
-                corporate ecosystems. Yet enterprise information can be
-                fragmented, complex and difficult to interpret — especially
-                for users outside Mainland China.
-              </p>
-            </div>
+          <div className="bodyCopy opportunityCopy">
+            <p>
+              China has one of the world&apos;s largest and most active corporate
+              ecosystems. Yet enterprise information can be fragmented,
+              complex and difficult to interpret — especially for users
+              outside Mainland China.
+            </p>
           </div>
         </div>
       </section>

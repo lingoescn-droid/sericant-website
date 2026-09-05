@@ -276,6 +276,67 @@ p {
   background: var(--muted);
 }
 
+.serviceHero {
+  min-height: 620px;
+  padding-top: 68px;
+  padding-bottom: 72px;
+  justify-content: flex-start;
+}
+
+.serviceHero .eyebrow {
+  margin-bottom: 38px;
+}
+
+.serviceHeroLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(380px, 0.75fr);
+  gap: clamp(48px, 5vw, 80px);
+  align-items: start;
+}
+
+.serviceHero h1 {
+  max-width: none;
+  margin: 0;
+  font-size: clamp(62px, 5.25vw, 84px);
+  line-height: 0.9;
+}
+
+.serviceHero h1 span {
+  display: block;
+}
+
+.serviceHero h1 span:last-child {
+  color: #85857e;
+}
+
+.serviceHeroAside {
+  padding-bottom: 5px;
+}
+
+.serviceHeroStatement {
+  max-width: 460px;
+  margin-bottom: 20px;
+  font-size: clamp(32px, 2.8vw, 46px);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 0.96;
+  color: #85857e;
+}
+
+.serviceHero .heroText {
+  max-width: 510px;
+  font-size: clamp(16px, 1.15vw, 18px);
+  line-height: 1.45;
+}
+
+.serviceHero .heroMeta {
+  margin-top: 30px;
+}
+
+.serviceHero .heroActions {
+  flex-wrap: nowrap;
+}
+
 .compactHero {
   min-height: 610px;
 }
@@ -306,6 +367,45 @@ p {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: clamp(50px, 8vw, 140px);
   align-items: start;
+}
+
+.opportunitySection {
+  min-height: 500px;
+  padding-top: 74px;
+  padding-bottom: 82px;
+}
+
+.opportunitySection .sectionLabel {
+  margin-bottom: 68px;
+}
+
+.opportunityGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr);
+  gap: clamp(64px, 9vw, 150px);
+  align-items: end;
+}
+
+.opportunityGrid h2 {
+  max-width: 790px;
+  font-size: clamp(48px, 4.4vw, 68px);
+  line-height: 0.98;
+}
+
+.opportunityGrid h2 em {
+  color: #85857e;
+  font-style: normal;
+}
+
+.opportunityCopy {
+  max-width: 520px;
+  padding-bottom: 3px;
+}
+
+.opportunityCopy p {
+  margin-bottom: 0;
+  font-size: clamp(16px, 1.2vw, 19px);
+  line-height: 1.55;
 }
 
 /* -------------------------------------------------
@@ -903,6 +1003,15 @@ footer > div:last-child {
     min-height: 650px;
   }
 
+  .serviceHeroLayout {
+    grid-template-columns: minmax(0, 1.25fr) minmax(330px, 0.75fr);
+    gap: 40px;
+  }
+
+  .serviceHero h1 {
+    font-size: clamp(50px, 5vw, 62px);
+  }
+
   #product .workflowGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -913,6 +1022,15 @@ footer > div:last-child {
 
   .hkGrid {
     grid-template-columns: 1fr;
+  }
+
+  .opportunityGrid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+    gap: 48px;
+  }
+
+  .opportunityGrid h2 {
+    font-size: clamp(44px, 4.8vw, 58px);
   }
 
   .hkGrid > div {
@@ -959,6 +1077,34 @@ footer > div:last-child {
     padding-bottom: 78px;
   }
 
+  .serviceHero .eyebrow {
+    margin-bottom: 30px;
+  }
+
+  .serviceHeroLayout {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .serviceHero {
+    padding-top: 64px;
+    padding-bottom: 68px;
+  }
+
+  .serviceHero .heroActions {
+    flex-wrap: wrap;
+  }
+
+  .serviceHero h1 {
+    font-size: clamp(50px, 14.5vw, 74px);
+    line-height: 0.9;
+  }
+
+  .serviceHeroStatement {
+    margin-bottom: 20px;
+    font-size: 34px;
+  }
+
   .eyebrow {
     margin-bottom: 24px;
   }
@@ -996,6 +1142,25 @@ footer > div:last-child {
   .twoCol {
     grid-template-columns: 1fr;
     gap: 38px;
+  }
+
+  .opportunitySection {
+    min-height: auto;
+    padding-top: 64px;
+    padding-bottom: 70px;
+  }
+
+  .opportunitySection .sectionLabel {
+    margin-bottom: 42px;
+  }
+
+  .opportunityGrid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .opportunityGrid h2 {
+    font-size: clamp(42px, 11vw, 56px);
   }
 
   .twoCol > div:empty {
