@@ -189,31 +189,23 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section opportunitySection">
         <div className="sectionLabel">01 / THE OPPORTUNITY</div>
 
-        <div className="twoCol">
-          <div />
+        <div className="opportunityGrid">
+          <h2>
+            Enterprise information is abundant.
+            <br />
+            <em>Understanding it shouldn&apos;t be difficult.</em>
+          </h2>
 
-          <div>
-            <h2
-              style={{
-                fontSize: "clamp(42px, 5vw, 72px)"
-              }}
-            >
-              Enterprise information is abundant.
-              <br />
-              Understanding it shouldn&apos;t be difficult.
-            </h2>
-
-            <div className="bodyCopy" style={{ marginTop: "34px" }}>
-              <p>
-                China has one of the world&apos;s largest and most active
-                corporate ecosystems. Yet enterprise information can be
-                fragmented, complex and difficult to interpret — especially
-                for users outside Mainland China.
-              </p>
-            </div>
+          <div className="bodyCopy opportunityCopy">
+            <p>
+              China has one of the world&apos;s largest and most active corporate
+              ecosystems. Yet enterprise information can be fragmented,
+              complex and difficult to interpret — especially for users
+              outside Mainland China.
+            </p>
           </div>
         </div>
       </section>
