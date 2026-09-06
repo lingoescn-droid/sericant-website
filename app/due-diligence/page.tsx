@@ -291,6 +291,10 @@ export default function DueDiligencePage() {
           <Link href="/terms">
             Terms
           </Link>
+
+          <Link href="/refund-delivery">
+            Delivery & cancellation
+          </Link>
         </div>
 
         <div>
