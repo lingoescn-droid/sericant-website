@@ -545,16 +545,16 @@ export default function Home() {
             </p>
 
             <p>
-              The product is being developed around a simple
-              observation: professionals may have access to
-              company information, but still spend significant
-              time searching, interpreting and organising it.
+              The service is built around a simple observation:
+              professionals may have access to company information,
+              but still spend significant time searching,
+              interpreting and organising it.
             </p>
 
             <p>
-              Sericant is exploring how AI can reduce that
-              friction while preserving structure, provenance
-              and professional judgement.
+              Sericant uses AI-assisted workflows to reduce that
+              friction while keeping source facts, interpretation
+              and information gaps clearly separated.
             </p>
           </div>
         </div>
@@ -576,17 +576,17 @@ export default function Home() {
 
           <div className="bodyCopy lightCopy">
             <p>
-              Sericant intends to activate production data
-              integrations only when relevant data rights,
-              licensing and processing arrangements are in
-              place.
+              Sericant currently provides scoped, source-based
+              research using public and lawfully usable information.
+              Any future automated data integrations will be
+              activated only after relevant data rights, licensing
+              and processing arrangements are in place.
             </p>
 
             <p>
               Source facts and AI-generated interpretation are
-              intended to be clearly separated, with provenance
-              and timestamps preserved alongside research
-              outputs.
+              clearly separated, with provenance and timestamps
+              preserved alongside research outputs.
             </p>
 
             <Link
@@ -714,6 +714,10 @@ export default function Home() {
 
           <Link href="/terms">
             Terms
+          </Link>
+
+          <Link href="/refund-delivery">
+            Delivery & cancellation
           </Link>
         </div>
 
