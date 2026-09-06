@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     title: "Sericant — China & Hong Kong Company Intelligence",
     description: "Source-based company intelligence for cross-border business decisions."
   },
+  verification: {
+    google: "lNUrS-Q1m6x5Lr_eAyktjYE7MtDcMSpYC6ydXqjIhs4"
+  },
   robots: { index: true, follow: true }
 };
 
