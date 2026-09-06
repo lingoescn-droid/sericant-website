@@ -10,6 +10,10 @@ export const metadata: Metadata = {
     "Source-based company intelligence for professionals evaluating Mainland Chinese and Hong Kong counterparties.",
   metadataBase: new URL("https://www.sericant.com"),
   alternates: { canonical: "/" },
+  icons: {
+    icon: "/icon.svg",
+    apple: "/apple-touch-icon.png"
+  },
   openGraph: {
     title: "Sericant — China & Hong Kong Company Intelligence",
     description:
