@@ -224,12 +224,11 @@ export default function Page() {
           </h2>
 
           <p>
-            Sericant is being developed in Hong Kong for professional and
-            cross-border company research. Any future transfer or processing of
-            regulated information across jurisdictions will be assessed
-            separately according to the relevant data category, source,
-            contractual rights, processing purpose and applicable legal
-            requirements.
+            Sericant operates from Hong Kong for professional and cross-border
+            company research. Any transfer or processing of regulated
+            information across jurisdictions is assessed separately according
+            to the relevant data category, source, contractual rights,
+            processing purpose and applicable legal requirements.
           </p>
 
           <p>
