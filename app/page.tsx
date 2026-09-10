@@ -9,6 +9,7 @@ export default function Home() {
         <Link href="/" className="logo"><SericantLogo /></Link>
         <nav className="desktopNav">
           <a href="#due-diligence">Report service</a>
+          <Link href="/china-supplier-check-gulf">Gulf buyers</Link>
           <Link href="/methodology">Methodology</Link>
           <Link href="/sample-report">Sample report</Link>
           <Link href="/sources">Source categories</Link>
@@ -82,7 +83,7 @@ export default function Home() {
 
       <footer>
         <div className="footerBrand"><SericantLogo /></div>
-        <div className="footerLinks"><Link href="/sample-report">Sample report</Link><Link href="/methodology">Methodology</Link><Link href="/sources">Source categories</Link><Link href="/responsible-ai-data">Responsible AI & Data</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/refund-delivery">Delivery & cancellation</Link></div>
+        <div className="footerLinks"><Link href="/china-supplier-check-gulf">For Gulf buyers</Link><Link href="/sample-report">Sample report</Link><Link href="/methodology">Methodology</Link><Link href="/sources">Source categories</Link><Link href="/responsible-ai-data">Responsible AI & Data</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/refund-delivery">Delivery & cancellation</Link></div>
         <div>© 2026 Sericant Limited · Hong Kong<br />Room 602, 6/F, Kai Yue Commercial Building, 2C Argyle Street, Mong Kok, Kowloon, Hong Kong</div>
       </footer>
     </main>
