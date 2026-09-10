@@ -310,7 +310,7 @@ p {
 }
 
 .serviceHero h1 span:last-child {
-  color: #555550;
+  color: var(--ink);
 }
 
 .serviceHeroAside {
