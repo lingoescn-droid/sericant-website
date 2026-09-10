@@ -190,6 +190,10 @@ p {
   text-transform: uppercase;
 }
 
+.mobileMenu {
+  display: none;
+}
+
 /* -------------------------------------------------
    HERO
 ------------------------------------------------- */
@@ -277,9 +281,9 @@ p {
 }
 
 .serviceHero {
-  min-height: 620px;
-  padding-top: 68px;
-  padding-bottom: 72px;
+  min-height: 560px;
+  padding-top: 58px;
+  padding-bottom: 60px;
   justify-content: flex-start;
 }
 
@@ -316,11 +320,11 @@ p {
 .serviceHeroStatement {
   max-width: 460px;
   margin-bottom: 20px;
-  font-size: clamp(32px, 2.8vw, 46px);
+  font-size: clamp(24px, 2vw, 32px);
   font-weight: 800;
   letter-spacing: -0.055em;
   line-height: 0.96;
-  color: #85857e;
+  color: #5f5f59;
 }
 
 .serviceHero .heroText {
@@ -330,7 +334,19 @@ p {
 }
 
 .serviceHero .heroMeta {
-  margin-top: 30px;
+  margin-top: 24px;
+}
+
+.heroPriceLine {
+  color: #4f4f49;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+}
+
+.heroPriceLine strong {
+  color: var(--ink);
+  font-size: 13px;
 }
 
 .serviceHero .heroActions {
@@ -1050,7 +1066,8 @@ footer > div:last-child {
   .topbar {
     min-height: 64px;
     padding: 0 20px;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
+    gap: 10px;
   }
 
   .desktopNav {
@@ -1059,6 +1076,54 @@ footer > div:last-child {
 
   .topCta {
     padding: 9px 12px;
+  }
+
+  .mobileMenu {
+    display: block;
+    position: relative;
+  }
+
+  .mobileMenu summary {
+    list-style: none;
+    border: 1px solid var(--ink);
+    padding: 9px 11px;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .mobileMenu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobileMenu[open] summary {
+    background: var(--ink);
+    color: #fff;
+  }
+
+  .mobileMenu nav {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: min(260px, calc(100vw - 40px));
+    padding: 10px 20px;
+    border: 1px solid var(--ink);
+    background: var(--bg);
+    box-shadow: 0 14px 30px rgba(17, 17, 17, 0.12);
+  }
+
+  .mobileMenu nav a {
+    display: block;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .mobileMenu nav a:last-child {
+    border-bottom: 0;
   }
 
   .hero,
@@ -1087,8 +1152,8 @@ footer > div:last-child {
   }
 
   .serviceHero {
-    padding-top: 64px;
-    padding-bottom: 68px;
+    padding-top: 52px;
+    padding-bottom: 56px;
   }
 
   .serviceHero .heroActions {
@@ -1096,13 +1161,13 @@ footer > div:last-child {
   }
 
   .serviceHero h1 {
-    font-size: clamp(50px, 14.5vw, 74px);
+    font-size: clamp(46px, 13vw, 66px);
     line-height: 0.9;
   }
 
   .serviceHeroStatement {
     margin-bottom: 20px;
-    font-size: 34px;
+    font-size: 27px;
   }
 
   .eyebrow {
@@ -1390,6 +1455,223 @@ footer > div:last-child {
   .homeSampleGrid, .homeMethodIntro { grid-template-columns: 1fr; }
   .homeReportExcerpt { max-width: 640px; }
   .homeTechnicalDetails #roadmap > div:last-child > div { grid-template-columns: 32px 1fr !important; }
+}
+
+/* -------------------------------------------------
+   INTAKE FORM
+------------------------------------------------- */
+
+.intakeForm {
+  padding: 38px 0 100px;
+  border-top: 1px solid var(--line);
+}
+
+.intakeTiming {
+  margin: 0 0 38px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.intakeGroup {
+  min-width: 0;
+  margin: 0;
+  padding: 38px 0 46px;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+.intakeGroup legend {
+  width: 100%;
+  padding: 0;
+  font-size: 22px;
+  font-weight: 750;
+  letter-spacing: -0.025em;
+}
+
+.intakeGroup legend span {
+  margin-right: 14px;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.intakeProductGroup {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.intakeProductGroup .intakeField {
+  max-width: 720px;
+  margin-top: 26px;
+}
+
+.intakeGroupIntro {
+  max-width: 680px;
+  margin: 14px 0 26px;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.intakeGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px 22px;
+  margin-top: 26px;
+  align-items: start;
+}
+
+.intakeGrid.twoFields {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.intakeField {
+  display: grid;
+  align-content: start;
+  gap: 9px;
+  min-width: 0;
+}
+
+.intakeField > label {
+  min-height: 16px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.intakeControl,
+.intakeTextarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #999;
+  border-radius: 0;
+  background: #fff;
+  color: #111;
+  font: inherit;
+}
+
+.intakeControl {
+  height: 54px;
+  padding: 0 15px;
+}
+
+select.intakeControl {
+  padding-right: 38px;
+  text-overflow: ellipsis;
+}
+
+.intakeTextarea {
+  padding: 15px 16px;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.intakeControl:focus,
+.intakeTextarea:focus {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+.intakeControl[aria-invalid="true"] {
+  border-color: #9b1c1c;
+}
+
+.intakeHelp,
+.fieldHelp,
+.fieldError {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.intakeHelp,
+.fieldHelp {
+  color: #555;
+}
+
+.fieldError {
+  color: #8c1717;
+}
+
+.intakeTextareas {
+  display: grid;
+  gap: 26px;
+  margin-top: 26px;
+}
+
+.intakeSafetyNote {
+  margin-top: 12px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  color: #555;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.intakeTerms {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 760px;
+  margin-top: 24px;
+  color: #444;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.intakeTerms input {
+  margin-top: 4px;
+}
+
+.intakeSubmitRow {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 34px;
+}
+
+.intakeSubmit {
+  border: 0;
+  padding: 17px 26px;
+  background: #111;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+.intakeSubmit:disabled {
+  background: #666;
+  cursor: not-allowed;
+}
+
+.intakeSubmitRow p {
+  color: #555;
+  font-size: 13px;
+}
+
+.intakeSubmitRow a {
+  color: #111;
+  text-decoration: underline;
+}
+
+@media (max-width: 760px) {
+  .intakeGrid,
+  .intakeGrid.twoFields {
+    grid-template-columns: 1fr;
+  }
+
+  .intakeSubmitRow {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .intakeSubmit {
+    width: 100%;
+  }
 }
 @media (max-width: 600px) {
   .homeMethodCards { grid-template-columns: 1fr; gap: 20px; }
