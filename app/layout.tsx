@@ -3,11 +3,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Sericant — China & Hong Kong Company Intelligence",
+    default: "Sericant — China Supplier & Company Checks",
     template: "%s | Sericant"
   },
   description:
-    "Source-based company intelligence for professionals evaluating Mainland Chinese and Hong Kong counterparties.",
+    "Source-based English company research for overseas businesses assessing Mainland China suppliers and counterparties.",
   metadataBase: new URL("https://www.sericant.com"),
   alternates: { canonical: "/" },
   icons: {
@@ -15,17 +15,18 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png"
   },
   openGraph: {
-    title: "Sericant — China & Hong Kong Company Intelligence",
+    title: "Sericant — China Supplier & Company Checks",
     description:
-      "Know who you are doing business with in China through structured, traceable company research.",
+      "Source-based English company research for overseas businesses assessing Mainland China suppliers and counterparties.",
     url: "https://www.sericant.com",
     siteName: "Sericant",
     type: "website"
   },
   twitter: {
     card: "summary",
-    title: "Sericant — China & Hong Kong Company Intelligence",
-    description: "Source-based company intelligence for cross-border business decisions."
+    title: "Sericant — China Supplier & Company Checks",
+    description:
+      "Source-based English company research for overseas businesses assessing Mainland China suppliers and counterparties."
   },
   verification: {
     google: "lNUrS-Q1m6x5Lr_eAyktjYE7MtDcMSpYC6ydXqjIhs4"
@@ -48,7 +49,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               email: "hello@sericant.com",
               foundingLocation: "Hong Kong",
               description:
-                "Company intelligence research for professionals evaluating Mainland Chinese and Hong Kong counterparties."
+                "Source-based English company research for overseas businesses assessing Mainland China suppliers and counterparties."
             })
           }}
         />
