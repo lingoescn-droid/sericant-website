@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import BriefProducts from "../components/BriefProducts";
+import SiteHeader from "../components/SiteHeader";
 import SericantLogo from "../components/SericantLogo";
 
 export const metadata: Metadata = {
@@ -76,17 +77,7 @@ export default function GulfSupplierCheckPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
 
-      <header className="topbar">
-        <Link href="/" className="logo"><SericantLogo /></Link>
-        <nav className="desktopNav">
-          <a href="#risk">Why check</a>
-          <a href="#scope">Research scope</a>
-          <Link href="/sample-report">Sample report</Link>
-          <Link href="/methodology">Methodology</Link>
-          <Link href="/sources">Source categories</Link>
-        </nav>
-        <Link href="/due-diligence/intake" className="topCta">Request a check</Link>
-      </header>
+      <SiteHeader />
 
       <section className="hero serviceHero gulfHero">
         <div className="eyebrow">FOR GULF BUYERS, IMPORTERS & PROCUREMENT TEAMS</div>
