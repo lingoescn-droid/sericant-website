@@ -4,6 +4,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: "https://www.sericant.com", lastModified: new Date(), priority: 1 },
     { url: "https://www.sericant.com/due-diligence", lastModified: new Date(), priority: 0.9 },
+    { url: "https://www.sericant.com/china-supplier-check-gulf", lastModified: new Date(), priority: 0.8 },
     { url: "https://www.sericant.com/due-diligence/intake", lastModified: new Date(), priority: 0.7 },
     { url: "https://www.sericant.com/sample-report", lastModified: new Date(), priority: 0.8 },
     { url: "https://www.sericant.com/methodology", lastModified: new Date(), priority: 0.7 },
