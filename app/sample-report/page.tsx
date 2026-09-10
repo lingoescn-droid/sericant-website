@@ -1,6 +1,6 @@
-import SericantLogo from "../components/SericantLogo";
 import type { Metadata } from "next";
 import Link from "next/link";
+import SiteHeader from "../components/SiteHeader";
 
 export const metadata: Metadata = {
   title: "Public Records Research Sample | Sericant",
@@ -12,7 +12,7 @@ const pdf = "/reports/sericant-sample-waterjet-beijing.pdf";
 export default function SampleReportPage() {
   return (
     <main>
-      <header className="topbar"><Link href="/" className="logo"><SericantLogo /></Link><nav className="desktopNav"><Link href="/due-diligence">Report service</Link><Link href="/methodology">Methodology</Link><Link href="/sources">Source categories</Link><Link href="/responsible-ai-data">Responsible AI & Data</Link></nav><Link href="/due-diligence/intake" className="topCta">Check a company</Link></header>
+      <SiteHeader />
       <section className="section realSampleIntro">
         <div className="sectionLabel">PUBLIC SAMPLE / PUBLIC-RECORDS RESEARCH</div>
         <div className="homeSampleGrid">
