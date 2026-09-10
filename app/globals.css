@@ -1472,3 +1472,147 @@ footer > div:last-child {
   margin-bottom: 28px;
   font-size: 18px;
 }
+
+/* Gulf buyer landing page. */
+.gulfHero .serviceHeroStatement {
+  color: var(--ink);
+}
+
+.gulfSectionIntro,
+.gulfProductsIntro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  gap: clamp(48px, 8vw, 130px);
+  align-items: end;
+}
+
+.gulfSectionIntro > p,
+.gulfProductsIntro > p,
+.gulfScopeLead {
+  max-width: 520px;
+  margin-bottom: 0;
+  font-size: clamp(16px, 1.2vw, 19px);
+  line-height: 1.6;
+}
+
+.gulfRiskGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 64px;
+  border-top: 1px solid var(--line);
+}
+
+.gulfRiskGrid article {
+  min-height: 300px;
+  padding: 26px clamp(22px, 2.5vw, 40px) 30px 0;
+}
+
+.gulfRiskGrid article + article {
+  padding-left: clamp(22px, 2.5vw, 40px);
+  border-left: 1px solid var(--line);
+}
+
+.gulfRiskGrid article > span {
+  display: block;
+  margin-bottom: 68px;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: .12em;
+}
+
+.gulfRiskGrid h3 {
+  max-width: 320px;
+  margin-bottom: 16px;
+  font-size: clamp(22px, 2vw, 30px);
+  line-height: 1.1;
+  letter-spacing: -.035em;
+}
+
+.gulfRiskGrid p {
+  max-width: 360px;
+  margin: 0;
+  color: #55554f;
+  font-size: 15px;
+}
+
+.gulfScope {
+  background: #e9e8e1;
+}
+
+.gulfScopeLayout {
+  align-items: end;
+}
+
+.gulfScopeLead {
+  margin-top: 32px;
+}
+
+.gulfCheckList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.gulfCheckList li {
+  position: relative;
+  padding: 15px 0 15px 30px;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.gulfCheckList li::before {
+  content: "↗";
+  position: absolute;
+  left: 0;
+  color: var(--muted);
+}
+
+.gulfBoundary h2 em {
+  color: rgba(255, 255, 255, .5);
+  font-style: normal;
+}
+
+.gulfProducts .briefProducts {
+  margin-top: 56px;
+}
+
+.gulfSampleLayout {
+  align-items: end;
+}
+
+.gulfSample .heroActions {
+  margin-top: 28px;
+}
+
+.gulfContact > p:not(.sectionLabel) {
+  max-width: 670px;
+}
+
+@media (max-width: 900px) {
+  .gulfSectionIntro,
+  .gulfProductsIntro {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .gulfRiskGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .gulfRiskGrid article {
+    min-height: 0;
+    padding: 28px 0;
+  }
+
+  .gulfRiskGrid article + article {
+    padding-left: 0;
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .gulfRiskGrid article > span {
+    margin-bottom: 30px;
+  }
+}
