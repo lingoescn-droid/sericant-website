@@ -1,22 +1,12 @@
-import SericantLogo from "./components/SericantLogo";
 import Link from "next/link";
 import BriefProducts, { BriefFAQ } from "./components/BriefProducts";
+import SiteHeader from "./components/SiteHeader";
+import SericantLogo from "./components/SericantLogo";
 
 export default function Home() {
   return (
     <main>
-      <header className="topbar">
-        <Link href="/" className="logo"><SericantLogo /></Link>
-        <nav className="desktopNav">
-          <a href="#due-diligence">Report service</a>
-          <Link href="/china-supplier-check-gulf">Gulf buyers</Link>
-          <Link href="/methodology">Methodology</Link>
-          <Link href="/sample-report">Sample report</Link>
-          <Link href="/sources">Source categories</Link>
-          <Link href="/responsible-ai-data">Responsible AI & Data</Link>
-        </nav>
-        <Link href="/due-diligence/intake" className="topCta">Check a company</Link>
-      </header>
+      <SiteHeader />
 
       <section className="hero serviceHero">
         <div className="eyebrow">MAINLAND CHINA & HONG KONG COMPANY INTELLIGENCE</div>
@@ -26,7 +16,7 @@ export default function Home() {
             <p className="serviceHeroStatement">See the evidence clearly.</p>
             <p className="heroText">Source-based company intelligence for professionals evaluating Mainland Chinese and Hong Kong counterparties. Clear English research with sources and limitations made visible.</p>
             <div className="heroActions"><Link href="/due-diligence/intake" className="btn primary">Check a company</Link><Link href="/sample-report" className="btn secondary">View sample report</Link></div>
-            <div className="heroMeta"><span>QUICK SCAN US$49 · FULL BRIEF FROM US$149</span><i /><span>SCOPE CONFIRMED FIRST</span><i /><span>1 OR 2–3 BUSINESS DAYS BY PRODUCT</span></div>
+            <div className="heroMeta heroPriceLine"><strong>From US$49</strong><i /><span>1–3 business days</span><i /><span>Scope confirmed before payment</span></div>
           </div>
         </div>
       </section>
