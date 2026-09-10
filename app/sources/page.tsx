@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SiteHeader from "../components/SiteHeader";
 
 export const metadata: Metadata = {
   title: "Source Categories",
@@ -17,6 +18,7 @@ const categories = [
 export default function SourcesPage() {
   return (
     <main>
+      <SiteHeader />
       <section className="hero compactHero">
         <div className="eyebrow">SOURCE CATEGORIES</div>
         <h1>Sources first.<br /><em>Claims second.</em></h1>
