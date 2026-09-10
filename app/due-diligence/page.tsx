@@ -1,7 +1,8 @@
-import SericantLogo from "../components/SericantLogo";
 import Link from "next/link";
 import BriefProducts, { BriefFAQ } from "../components/BriefProducts";
 import type { Metadata } from "next";
+import SiteHeader from "../components/SiteHeader";
+import SericantLogo from "../components/SericantLogo";
 
 export const metadata: Metadata = {
   title: "China & Hong Kong Company Intelligence Brief",
@@ -13,24 +14,7 @@ export const metadata: Metadata = {
 export default function DueDiligencePage() {
   return (
     <main>
-      <header className="topbar">
-        <Link href="/" className="logo">
-          <SericantLogo />
-        </Link>
-
-        <nav className="desktopNav">
-          <Link href="/sample-report">Sample report</Link>
-          <Link href="/methodology">Methodology</Link>
-          <Link href="/#about">About</Link>
-          <Link href="/responsible-ai-data">
-            Responsible AI & Data
-          </Link>
-        </nav>
-
-        <Link href="/due-diligence/intake" className="topCta">
-          Check a company
-        </Link>
-      </header>
+      <SiteHeader />
 
       <section className="hero serviceHero">
         <div className="eyebrow">
