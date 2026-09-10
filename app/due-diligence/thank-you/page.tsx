@@ -1,5 +1,5 @@
-import SericantLogo from "../../components/SericantLogo";
 import Link from "next/link";
+import SiteHeader from "../../components/SiteHeader";
 
 export default function DueDiligenceThankYouPage() {
   return (
@@ -8,47 +8,17 @@ export default function DueDiligenceThankYouPage() {
         minHeight: "100vh",
         background: "#f3f1e9",
         color: "#111",
-        padding: "40px 24px",
+        padding: 0,
       }}
     >
+      <SiteHeader />
       <div
         style={{
           maxWidth: "900px",
           margin: "0 auto",
+          padding: "40px 24px",
         }}
       >
-        <header
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            paddingBottom: "32px",
-            borderBottom: "1px solid #cfcfc8",
-          }}
-        >
-          <Link
-            href="/"
-            style={{
-              color: "#111",
-              textDecoration: "none",
-              fontWeight: 700,
-              letterSpacing: "0.08em",
-            }}
-          >
-            <SericantLogo />
-          </Link>
-
-          <Link
-            href="/due-diligence"
-            style={{
-              color: "#111",
-              textDecoration: "none",
-              fontSize: "14px",
-            }}
-          >
-            Company Due Diligence
-          </Link>
-        </header>
 
         <section
           style={{
