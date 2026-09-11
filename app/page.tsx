@@ -1,5 +1,5 @@
 import Link from "next/link";
-import BriefProducts, { BriefFAQ } from "./components/BriefProducts";
+import BriefProducts, { BriefComparison, BriefFAQ } from "./components/BriefProducts";
 import SiteHeader from "./components/SiteHeader";
 import SericantLogo from "./components/SericantLogo";
 
@@ -25,6 +25,7 @@ export default function Home() {
         <div className="sectionLabel">01 / CHOOSE YOUR BRIEF</div>
         <h2>Start with a scan.<br /><em>Go deeper when you need to.</em></h2>
         <BriefProducts />
+        <BriefComparison />
         <h3 className="briefFAQTitle">Before you choose</h3><BriefFAQ />
       </section>
 
@@ -36,9 +37,13 @@ export default function Home() {
             <p className="sampleIntro">See how a brief separates company information, source references and unanswered questions.</p>
             <p className="sampleDisclaimer">Watermarked public-records research sample based on a Chinese enterprise-credit disclosure report. Target identifier: 911101056738046445 · Chinese legal name: 沃特杰特贸易（北京）有限公司.</p>
             <div className="sampleActions"><Link href="/sample-report" className="btn primary">Explore the sample</Link><a href="/reports/sericant-sample-waterjet-beijing.pdf" download className="btn secondary">Download PDF</a></div>
-            <p className="sampleDisclaimer">15-page English PDF · Official-record review. Registry status: deregistered. Approval date shown in the public disclosure report: 2 February 2026. This independent methodology sample is not a client testimonial or endorsement.</p>
+            <p className="sampleDisclaimer">15-page English PDF · Official-record review. Registry status: deregistered. Approval date shown in the public disclosure report: 2 February 2026. This deregistered entity was selected to demonstrate how Sericant presents status changes, source evidence and information gaps. This independent methodology sample is not a client testimonial or endorsement.</p>
           </div>
           <figure className="pdfPreviewCard"><Link href="/sample-report" aria-label="Preview the 15-page Sericant public sample report"><img src="/images/reports/sample-cover.webp" width="850" height="1100" loading="lazy" alt="Cover of Sericant’s watermarked public-records research sample" /></Link><figcaption><span>PUBLIC SAMPLE · 15 PAGES · WATERMARKED</span><Link href="/sample-report">View report →</Link></figcaption></figure>
+        </div>
+        <div className="samplePagePreviews" aria-label="Selected pages from the public sample report">
+          <figure><img src="/images/reports/sample-entity.jpg" width="993" height="1404" loading="lazy" alt="Entity identification page from the Sericant public sample report" /><figcaption><strong>Entity identification</strong><span>Legal name, identifier and the boundary around an AI-generated English rendering.</span></figcaption></figure>
+          <figure><img src="/images/reports/sample-gaps.jpg" width="993" height="1404" loading="lazy" alt="Information gaps page from the Sericant public sample report" /><figcaption><strong>Information gaps</strong><span>What the source does not establish and which enquiries remain transaction-specific.</span></figcaption></figure>
         </div>
       </section>
 

@@ -94,7 +94,7 @@ export default function GulfSupplierCheckPage() {
               the registered legal entity behind a Mainland China supplier.
             </p>
             <div className="heroActions">
-              <Link href="/due-diligence/intake" className="btn primary">Request a supplier check</Link>
+              <Link href="/due-diligence/intake" className="btn primary">Check a China supplier</Link>
               <Link href="/sample-report" className="btn secondary">View sample report</Link>
             </div>
             <div className="heroMeta">
@@ -200,7 +200,7 @@ export default function GulfSupplierCheckPage() {
         <div className="sectionLabel">06 / REQUEST A CHINA SUPPLIER CHECK</div>
         <h2>Confirm the company<br />before you commit.</h2>
         <div className="heroActions">
-          <Link href="/due-diligence/intake" className="btn primary">Submit company details</Link>
+          <Link href="/due-diligence/intake" className="btn primary">Check a China supplier</Link>
           <a href="mailto:hello@sericant.com" className="btn secondary">Email Sericant</a>
         </div>
         <p>No payment is required when you submit a request. We confirm the available scope, fee and estimated delivery date first.</p>
