@@ -21,7 +21,7 @@ export default function SiteHeader() {
         ))}
       </nav>
 
-      <Link href="/due-diligence/intake" className="topCta">Request</Link>
+      <Link href="/due-diligence/intake" className="topCta">Check a company</Link>
 
       <details className="mobileMenu">
         <summary aria-label="Open navigation menu">Menu</summary>

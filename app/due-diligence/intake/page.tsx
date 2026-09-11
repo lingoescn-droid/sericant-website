@@ -282,7 +282,10 @@ export default function DueDiligenceIntakePage() {
               <input name="faxNumber" tabIndex={-1} autoComplete="off" />
             </label>
           </div>
-          <p className="intakeTiming">Takes about 2 minutes. No payment is required at this stage.</p>
+          <div className="intakeTiming">
+            <p>Takes about 2 minutes. No payment is required at this stage.</p>
+            <p>Scope requests are normally reviewed within one Hong Kong business day. <Link href="/refund-delivery">Read the delivery and cancellation policy.</Link></p>
+          </div>
 
           <fieldset className="intakeGroup intakeProductGroup">
             <legend><span>01</span> Choose a report</legend>
