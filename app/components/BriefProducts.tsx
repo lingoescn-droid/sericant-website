@@ -12,7 +12,7 @@ export default function BriefProducts() {
         <p>{product.summary}</p>
         <ul>{product.sections.map(section => <li key={section}>{section}</li>)}</ul>
         <p className="briefProductNote">{key === "quick" ? "Three sections. Excludes ownership tracing, litigation and adverse-media searches, financial review and legal analysis." : "Introductory promotional price. Coverage depends on available sources and the confirmed scope; complex or specialist work may require a separate quotation."}</p>
-        <Link href={`/due-diligence/intake?product=${key}`} className={`btn ${key === "standard" ? "primary" : "secondary"}`}>{key === "quick" ? "Request Quick Scan" : "Request full brief"} →</Link>
+        <Link href={`/due-diligence/intake?product=${key}`} className={`btn ${key === "standard" ? "primary" : "secondary"}`}>{key === "quick" ? "Request a Quick Scan" : "Request a Full Brief"} →</Link>
       </article>;
     })}</div>
     <p className="briefSharedNote">Delivery estimates run from payment and receipt of sufficient identifying information. Scope, fee and estimated delivery date are confirmed before payment. Report length and available sources vary by company.</p>
