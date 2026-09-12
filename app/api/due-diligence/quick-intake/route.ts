@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
     if (!validEmail(email)) return NextResponse.json({ok:false,error:"Invalid email address."},{status:400});
 
     const apiKey=process.env.RESEND_API_KEY, notificationEmail=process.env.ORDER_NOTIFICATION_EMAIL, fromEmail=process.env.RESEND_FROM_EMAIL;
-    const siteUrl=(process.env.SITE_URL || "https://www.sericant.com").replace(/\/$/,"");
+    const siteUrl=request.nextUrl.origin.replace(/\/$/,"");
     if (!apiKey || !notificationEmail || !fromEmail || !process.env.STRIPE_SECRET_KEY) return NextResponse.json({ok:false,error:"Server configuration error."},{status:500});
 
     const id=requestId();
