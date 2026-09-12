@@ -6,7 +6,7 @@ export const runtime="nodejs";
 function escapeHtml(value:string){return value.replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");}
 export async function GET(request:NextRequest){
  const token=request.nextUrl.searchParams.get("token")||"",secret=process.env.SCOPE_APPROVAL_SECRET||"",apiKey=process.env.RESEND_API_KEY||"",fromEmail=process.env.RESEND_FROM_EMAIL||"",replyTo=process.env.ORDER_NOTIFICATION_EMAIL||"";
- const siteUrl=(process.env.SITE_URL||"https://www.sericant.com").replace(/\/$/,"");
+ const siteUrl=request.nextUrl.origin.replace(/\/$/,"");
  if(!secret||!apiKey||!fromEmail||!replyTo||!process.env.STRIPE_SECRET_KEY)return new NextResponse("Scope confirmation is not configured.",{status:500});
  const payload=verifyScopeConfirmationToken(token,secret);if(!payload)return new NextResponse("This approval link is invalid or has expired.",{status:400});
  if(payload.product!=="standard")return new NextResponse("Quick Scan does not use scope confirmation. Use the direct-payment Quick Scan flow.",{status:409});
