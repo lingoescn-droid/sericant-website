@@ -35,6 +35,8 @@ export default function Page() {
           Trust is part of the product architecture.
         </h1>
 
+        <p className="pageUpdated">Last updated: September 2026</p>
+
         <p
           className="lede"
           style={{
