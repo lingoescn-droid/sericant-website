@@ -19,12 +19,27 @@ const steps = [
   ["08", "Deliver", "Provide a dated English brief with visible scope, findings, sources, uncertainties and use limitations."]
 ];
 
+const serviceCapabilities = [
+  "Analyst-led entity identification and public-record research",
+  "AI assistance for bounded translation, organisation and drafting",
+  "Human review of entity identity, source support, language and limitations",
+  "Dated English reports with visible sources and information gaps"
+];
+
+const roadmapCapabilities = [
+  "Automated entity-candidate ranking",
+  "Structured provenance and timestamp storage",
+  "Conflict and missing-information alerts",
+  "Change monitoring and controlled customer access"
+];
+
 export default function MethodologyPage() {
   return (
     <main>
       <SiteHeader />
-      <section className="hero compactHero"><div className="eyebrow">RESEARCH METHODOLOGY</div><h1>Evidence first.<br /><em>Interpretation second.</em></h1><p className="heroText">A bounded company-research workflow designed for traceability, uncertainty and professional review.</p></section>
+      <section className="hero compactHero"><div className="eyebrow">RESEARCH METHODOLOGY</div><h1>Evidence first.<br /><em>Interpretation second.</em></h1><p className="heroText">A bounded company-research workflow designed for traceability, uncertainty and professional review.</p><p className="pageUpdated">Last updated: September 2026</p></section>
       <section className="section" id="workflow"><div className="sectionLabel">HOW A BRIEF IS PREPARED</div><div className="workflowGrid">{steps.map(([n,t,d]) => <article className="workflowCard" key={n}><span>{n}</span><h3>{t}</h3><p>{d}</p></article>)}</div></section>
+      <section className="section capabilityStatus"><div className="sectionLabel">CURRENT SERVICE &amp; PRODUCT ROADMAP</div><div className="capabilityStatusGrid"><article><p className="capabilityKicker">AVAILABLE NOW</p><h2>Current service</h2><ul>{serviceCapabilities.map((capability) => <li key={capability}>{capability}</li>)}</ul></article><article><p className="capabilityKicker">PLANNED CAPABILITIES</p><h2>Product roadmap</h2><ul>{roadmapCapabilities.map((capability) => <li key={capability}>{capability}</li>)}</ul></article></div><p className="roadmapNote">Roadmap capabilities are not presented as currently deployed unless expressly stated.</p></section>
       <section className="darkSection"><div className="sectionLabel light">OUTPUT BOUNDARIES</div><div className="twoCol"><h2>Useful research.<br /><em>Not a professional determination.</em></h2><div className="bodyCopy lightCopy"><p>Sericant identifies source-supported facts, observable signals, inconsistencies and information gaps. It does not declare that a target is legally compliant, creditworthy, safe, investment-grade or approved for KYC.</p><p>The customer and its qualified advisers remain responsible for consequential decisions.</p><Link href="/responsible-ai-data" className="textLink">Responsible AI & Data →</Link></div></div></section>
       <section className="contact"><div className="sectionLabel">START A REQUEST</div><h2>Have a company<br />to evaluate?</h2><Link href="/due-diligence/intake" className="contactEmail">Check the scope →</Link></section>
     </main>
