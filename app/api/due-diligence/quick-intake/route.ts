@@ -18,10 +18,16 @@ function requestId() {
   const date = `${now.getUTCFullYear()}${String(now.getUTCMonth()+1).padStart(2,"0")}${String(now.getUTCDate()).padStart(2,"0")}`;
   return `SER-QS-${date}-${crypto.randomBytes(3).toString("hex").toUpperCase()}`;
 }
+function errorDetails(error: unknown) {
+  if (error instanceof Error) return { name: error.name, message: error.message };
+  return { name: "UnknownError", message: String(error) };
+}
 
 export async function POST(request: NextRequest) {
+  let stage = "parse_request";
   try {
     const body = (await request.json()) as Payload;
+    stage = "validate_request";
     const customerName=clean(body.customerName,150), email=clean(body.email,254), companyLegalName=clean(body.companyLegalName,300);
     const companyChineseName=clean(body.companyChineseName,300), jurisdiction=clean(body.jurisdiction,100), registrationNumber=clean(body.registrationNumber,150);
     const website=clean(body.website,500), researchPurpose=clean(body.researchPurpose,300), specificQuestions=clean(body.specificQuestions,5000), additionalInformation=clean(body.additionalInformation,5000), faxNumber=clean(body.faxNumber,100);
@@ -29,12 +35,24 @@ export async function POST(request: NextRequest) {
     if (!customerName || !email || !companyLegalName || !jurisdiction || !researchPurpose || body.termsAccepted !== true) return NextResponse.json({ok:false,error:"Required fields or consent are missing."},{status:400});
     if (!validEmail(email)) return NextResponse.json({ok:false,error:"Invalid email address."},{status:400});
 
+    stage = "check_configuration";
     const apiKey=process.env.RESEND_API_KEY, notificationEmail=process.env.ORDER_NOTIFICATION_EMAIL, fromEmail=process.env.RESEND_FROM_EMAIL;
     const siteUrl=request.nextUrl.origin.replace(/\/$/,"");
-    if (!apiKey || !notificationEmail || !fromEmail || !process.env.STRIPE_SECRET_KEY) return NextResponse.json({ok:false,error:"Server configuration error."},{status:500});
+    const missingConfig = [
+      !apiKey && "RESEND_API_KEY",
+      !notificationEmail && "ORDER_NOTIFICATION_EMAIL",
+      !fromEmail && "RESEND_FROM_EMAIL",
+      !process.env.STRIPE_SECRET_KEY && "STRIPE_SECRET_KEY",
+    ].filter(Boolean);
+    if (missingConfig.length) {
+      console.error("[quick-intake] configuration missing", { stage, missing: missingConfig });
+      return NextResponse.json({ok:false,error:"Server configuration error."},{status:500});
+    }
 
     const id=requestId();
+    stage = "create_stripe_checkout";
     const checkout=await createStripeCheckoutSession({requestId:id,product:"quick",productName:"Sericant Quick Scan Brief",amountUsdCents:4900,customerName,customerEmail:email,companyLegalName,companyChineseName,registrationNumber,jurisdiction,siteUrl});
+    stage = "send_intake_notification";
     const value=(text:string)=>escapeHtml(text||"Not provided");
     const html=`<div style="font-family:Arial,sans-serif;line-height:1.6;color:#111;max-width:700px"><h1>New Quick Scan checkout</h1>
       <p><strong>Reference:</strong> ${value(id)}<br/><strong>Stripe Checkout Session:</strong> ${value(checkout.id)}<br/><strong>Status:</strong> Checkout created — confirm payment in Stripe before research.</p>
@@ -44,7 +62,14 @@ export async function POST(request: NextRequest) {
       <p><strong>Specific questions:</strong><br/>${value(specificQuestions).replaceAll("\n","<br/>")}</p><p><strong>Additional information:</strong><br/>${value(additionalInformation).replaceAll("\n","<br/>")}</p>
       <p><strong>Terms and privacy acknowledged:</strong> Yes</p></div>`;
     const emailResponse=await fetch("https://api.resend.com/emails",{method:"POST",headers:{Authorization:`Bearer ${apiKey}`,"Content-Type":"application/json"},body:JSON.stringify({from:fromEmail,to:[notificationEmail],reply_to:email,subject:`${id} — Quick Scan checkout — ${companyLegalName}`,html})});
-    if (!emailResponse.ok) { console.error("Failed to record Quick Scan intake:",await emailResponse.text()); return NextResponse.json({ok:false,error:"Unable to process the request."},{status:502}); }
+    if (!emailResponse.ok) {
+      const resendStatus = emailResponse.status;
+      console.error("[quick-intake] intake notification failed", { stage, resendStatus });
+      return NextResponse.json({ok:false,error:"Unable to process the request."},{status:502});
+    }
     return NextResponse.json({ok:true,requestId:id,checkoutUrl:checkout.url});
-  } catch(error) { console.error("Quick Scan intake error:",error); return NextResponse.json({ok:false,error:"Unable to process the request."},{status:500}); }
+  } catch(error) {
+    console.error("[quick-intake] request failed", { stage, ...errorDetails(error) });
+    return NextResponse.json({ok:false,error:"Unable to process the request."},{status:500});
+  }
 }
